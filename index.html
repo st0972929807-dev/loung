@@ -27,6 +27,7 @@
             background-color: #1c1c1e;
             border-bottom: 1px solid #2c2c2e;
             padding: 10px 0;
+            flex-shrink: 0;
         }
 
         .nav-tabs {
@@ -62,17 +63,19 @@
             flex: 1;
             position: relative;
             background-color: #000000;
+            height: calc(100vh - 50px); /* 扣除 header 高度，確保滿版不溢出 */
         }
 
+        /* 核心修正：統一分頁顯示與隱藏機制 */
         .tab-content {
-            display: none;
+            display: none; 
             width: 100%;
             height: 100%;
             border: none;
         }
 
         .tab-content.active {
-            display: block;
+            display: block !important; /* 強制啟動顯示 */
         }
 
         /* 密碼保護遮罩 */
@@ -265,7 +268,7 @@
         <iframe id="tab-0" class="tab-content active" src="https://jazzy-jalebi-24488f.netlify.app/"></iframe>
 
         <!-- 分頁二：第二個網址 (設有密碼鎖) -->
-        <div id="tab-1-container" class="tab-content" style="position: relative; height: 100%; width: 100%;">
+        <div id="tab-1-container" class="tab-content">
             <!-- 密碼鎖畫面 -->
             <div id="lock-screen" class="lock-screen">
                 <div class="lock-card">
@@ -280,7 +283,7 @@
             <iframe id="tab-1" style="width:100%; height:100%; border:none; display:none;" src="https://6a561a77fa80380008fa8372--phenomenal-chaja-07e7cf.netlify.app/"></iframe>
         </div>
 
-        <!-- 分頁三：交付及退費政策 (直接從專屬房間提取取代) -->
+        <!-- 分頁三：交付及退費政策 -->
         <div id="tab-2" class="tab-content" style="background-color: #121212; overflow-y: auto;">
             <div class="policy-container">
                 <div class="policy-header">
@@ -325,6 +328,4 @@
                         </li>
                         <li>
                             <div class="step-title">控管機制</div>
-                            <div class="step-desc">客戶下單預約之時間，僅能選擇自付款日起算 30 天內之檔期，不接受超過 30 天以上之遠期預約，以降低預收款項之延遲交付風險。</div>
-                        </li>
-                    </ul>
+                            <div class="step-desc">客戶下單預約之時間，僅能選擇自付款日起算 30 天內之檔期，不接受超過 30 天以上之遠期預約，
