@@ -3,301 +3,343 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>閒人案內所｜官方聯絡傳送門</title>
+    <title>閒人案內所 ｜ VIP Lounge Portal</title>
     <style>
-        /* 極簡黑色質感風格 */
-        body {
-            background-color: #121212;
-            color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        /* 基礎樣式 & Cyber Neon 霓虹主題 */
+        * {
+            box-sizing: border-box;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        body {
+            background-color: #0b0f19;
+            color: #f1f5f9;
+            min-height: 100vh;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
         }
 
         .container {
             width: 100%;
-            max-width: 500px;
+            max-width: 800px;
+            background: rgba(17, 24, 39, 0.85);
+            border: 1px solid #1f2937;
+            border-radius: 16px;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.15);
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            margin-bottom: 30px;
+        }
+
+        /* 標題 Header */
+        .header {
             text-align: center;
+            padding: 40px 20px 20px;
+            border-bottom: 1px solid #1f2937;
+            position: relative;
         }
 
-        h1 {
-            font-size: 24px;
-            margin-bottom: 5px;
+        .logo-glow {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            background: linear-gradient(45deg, #00f2fe, #4facfe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #94a3b8;
+            font-size: 0.95rem;
             letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
-        .subtitle {
-            color: #888888;
-            font-size: 14px;
-            margin-bottom: 25px;
-        }
-
-        /* 簡單的分頁按鈕 */
-        .tab-nav {
+        /* 分頁 Tab 導覽列 */
+        .tab-navigation {
             display: flex;
-            gap: 5px;
-            margin-bottom: 25px;
+            background: #111827;
+            border-bottom: 1px solid #1f2937;
         }
 
         .tab-btn {
             flex: 1;
-            padding: 12px 5px;
-            background-color: #222222;
-            color: #888888;
-            border: 1px solid #333333;
-            border-radius: 8px;
+            padding: 16px 10px;
+            background: none;
+            border: none;
+            color: #94a3b8;
+            font-size: 1rem;
+            font-weight: 600;
             cursor: pointer;
-            font-weight: bold;
-            font-size: 13px;
+            transition: all 0.3s ease;
+            text-align: center;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab-btn:hover {
+            color: #00f2fe;
+            background: rgba(0, 242, 254, 0.05);
         }
 
         .tab-btn.active {
-            background-color: #ff2d55;
-            color: #ffffff;
-            border-color: #ff2d55;
+            color: #00f2fe;
+            border-bottom-color: #00f2fe;
+            background: rgba(0, 242, 254, 0.08);
+            text-shadow: 0 0 8px rgba(0, 242, 254, 0.5);
         }
 
-        /* 分頁顯示控制 */
+        /* 內容區塊 */
         .tab-content {
-            display: none;
-            text-align: left;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        /* 連結卡片樣式 */
-        .section-title {
-            font-size: 14px;
-            color: #ff2d55;
-            margin: 20px 0 10px 0;
-            border-left: 3px solid #ff2d55;
-            padding-left: 8px;
-            font-weight: bold;
-        }
-
-        .link-card {
-            display: block;
-            background-color: #1a1a1a;
-            border: 1px solid #2a2a2a;
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 10px;
-            text-decoration: none;
-            color: #ffffff;
-        }
-
-        .link-card h3 {
-            margin: 0 0 5px 0;
-            font-size: 15px;
-        }
-
-        .link-card p {
-            margin: 0;
-            font-size: 12px;
-            color: #888888;
-        }
-
-        /* 專屬房間解鎖樣式 */
-        .lock-box {
-            background-color: #1a1a1a;
-            border: 1px solid #ff2d55;
-            border-radius: 12px;
             padding: 30px 20px;
-            text-align: center;
         }
 
-        .lock-box input {
-            width: 80%;
-            padding: 10px;
-            margin: 15px 0;
-            border-radius: 6px;
-            border: 1px solid #333333;
-            background-color: #000000;
-            color: #ffffff;
-            text-align: center;
-            font-size: 16px;
+        .tab-panel {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out forwards;
         }
 
-        .lock-box button {
-            background-color: #ff2d55;
-            color: white;
-            border: none;
-            padding: 10px 25px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
+        .tab-panel.active {
+            display: block;
         }
 
-        /* VIP 包廂網格 */
+        /* HOTLINE & ROOMS 樣式 */
+        .section-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #00f2fe;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-left: 4px solid #00f2fe;
+            padding-left: 10px;
+        }
+
+        .hotline-card {
+            background: rgba(0, 242, 254, 0.05);
+            border: 1px solid rgba(0, 242, 254, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .hotline-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 242, 254, 0.15);
+            border-color: #00f2fe;
+        }
+
+        .hotline-icon {
+            font-size: 2rem;
+        }
+
+        .hotline-info h3 {
+            color: #f1f5f9;
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+
+        .hotline-info p {
+            color: #94a3b8;
+            font-size: 0.85rem;
+        }
+
         .room-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 8px;
-            margin-top: 15px;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+            margin-bottom: 30px;
         }
 
-        .room-item {
-            background-color: #222222;
-            border: 1px solid #333333;
+        .room-btn {
+            background: #1e293b;
+            border: 1px solid #334155;
             border-radius: 8px;
-            padding: 15px 5px;
+            color: #f1f5f9;
+            padding: 12px 6px;
             text-align: center;
             text-decoration: none;
-            color: #ffffff;
-            font-weight: bold;
-            font-size: 14px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.2s ease;
         }
 
-        .room-item span {
-            display: block;
-            font-size: 9px;
-            color: #00f0ff;
+        .room-btn span {
+            font-size: 0.65rem;
+            color: #64748b;
             margin-top: 2px;
+            font-weight: normal;
         }
 
-        .lock-header {
+        .room-btn:hover {
+            background: rgba(0, 242, 254, 0.1);
+            border-color: #00f2fe;
+            color: #00f2fe;
+            transform: scale(1.05);
+        }
+
+        .chat-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .chat-btn {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #1a1a1a;
-            padding: 8px 12px;
-            border-radius: 6px;
-            margin-bottom: 15px;
-            font-size: 12px;
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 10px;
+            padding: 16px 20px;
+            color: #f1f5f9;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease;
         }
 
-        .lock-header button {
-            background: none;
-            border: 1px solid #555555;
-            color: #888888;
-            padding: 3px 8px;
-            border-radius: 4px;
-            cursor: pointer;
+        .chat-btn:hover {
+            background: rgba(0, 242, 254, 0.08);
+            border-color: #00f2fe;
+            color: #00f2fe;
+            padding-left: 25px;
         }
 
-        /* 政策與條款排版 */
-        .policy-block {
-            background-color: #1a1a1a;
-            border: 1px solid #2a2a2a;
-            border-radius: 12px;
+        /* 規範 & SOP 樣式 */
+        .sop-list, .rule-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sop-item, .rule-item {
+            background: #182235;
+            border: 1px solid #2d3748;
+            border-radius: 10px;
             padding: 20px;
-            margin-bottom: 15px;
         }
 
-        .policy-block h3 {
-            margin-top: 0;
-            font-size: 15px;
-            color: #ffffff;
-            border-bottom: 1px solid #2a2a2a;
-            padding-bottom: 8px;
+        .sop-num {
+            font-weight: 800;
+            color: #00f2fe;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            display: block;
         }
 
-        .policy-block ol, .policy-block ul {
-            padding-left: 20px;
-            font-size: 13px;
-            color: #aaaaaa;
+        .sop-title, .rule-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #f1f5f9;
+            margin-bottom: 8px;
+        }
+
+        .sop-content, .rule-content {
+            color: #cbd5e1;
+            font-size: 0.92rem;
             line-height: 1.6;
         }
 
-        .policy-block li {
-            margin-bottom: 10px;
-        }
-
-        .alert-text {
-            color: #ff2d55;
+        .highlight-red {
+            color: #f87171;
             font-weight: bold;
         }
 
-        footer {
-            margin-top: 30px;
-            font-size: 11px;
-            color: #555555;
+        .highlight-blue {
+            color: #38bdf8;
+            font-weight: bold;
+        }
+
+        .card-inner {
+            background: rgba(30, 41, 59, 0.5);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid #3b82f6;
+            margin-top: 10px;
+        }
+
+        /* 頁尾 Footer */
+        .footer {
+            text-align: center;
+            color: #475569;
+            font-size: 0.8rem;
+            padding: 20px;
+        }
+
+        /* 動畫效果 */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 手機 RWD 適應 */
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.8rem; }
+            .room-grid { grid-template-columns: repeat(4, 1fr); gap: 8px; }
+            .tab-btn { font-size: 0.85rem; padding: 14px 5px; }
+            .tab-content { padding: 20px 15px; }
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- 標頭 -->
-        <header>
-            <h1>👻 閒人案內所</h1>
-            <p class="subtitle">官方聯絡傳送門</p>
-        </header>
+        <!-- 標頭資訊 -->
+        <div class="header">
+            <div class="logo-glow">👻</div>
+            <h1>閒人案內所</h1>
+            <p>Cyber Neon ｜ VIP Lounge Portal</p>
+        </div>
 
-        <!-- 分頁切換選單 -->
-        <nav class="tab-nav">
-            <button class="tab-btn active" onclick="showTab('home')">首頁公告</button>
-            <button class="tab-btn" onclick="showTab('vip')">專屬房間</button>
-            <button class="tab-btn" onclick="showTab('policy')">交付與退費政策</button>
-        </nav>
+        <!-- 整合後的三大分頁導覽列 -->
+        <div class="tab-navigation">
+            <button class="tab-btn active" onclick="switchTab(event, 'tab-lounge')">VIP 語音對談</button>
+            <button class="tab-btn" onclick="switchTab(event, 'tab-sop')">服務預約 SOP</button>
+            <button class="tab-btn" onclick="switchTab(event, 'tab-refund')">服務交付與退費說明</button>
+        </div>
 
-        <!-- ==================== 分頁 1: 首頁公告 ==================== -->
-        <main id="tab-home" class="tab-content active">
-            <div class="section-title">主打服務 ｜ 媒合專區</div>
-            <a href="https://line.me/ti/g2/HjSXyaP1srrEd-vHV9h9uxaHtc4Q-NC4Z3VsXg?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="link-card">
-                <h3>求租 ． 出租媒合</h3>
-                <p>尋找陪伴、上架出租，請進此群</p>
-            </a>
-            <a href="https://line.me/ti/g2/NHXeqbaUztcj7Hs_c8aXZWObCMAvAZoB2kAACQ?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="link-card">
-                <h3>會議室（限出租者）</h3>
-                <p>內部行政討論、重要通知專區</p>
-            </a>
-
-            <div class="section-title">社群交流 ｜ 互動空間</div>
-            <a href="https://line.me/ti/g2/neX2NWHUb5KNngE6IKt7qj_1jlHjYuUON-k85w?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="link-card">
-                <h3>閒人聊天室 👻</h3>
-                <p>日常吹水、找同好，最放鬆的溫馨角落</p>
-            </a>
-            <a href="https://line.me/ti/g2/wxs8HU9a3dQJKFlBm1k-2qEYB3hPhIGrlFi6Ig?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="link-card">
-                <h3>招待所（電話專用）</h3>
-                <p>專供語音聯絡、即時語音招待使用</p>
-            </a>
-
-            <div class="section-title">專人諮詢 ｜ 一對一聯絡</div>
-            <a href="https://line.me/ti/p/mR19KggePp" target="_blank" class="link-card">
-                <h3>聯絡所長</h3>
-                <p>點擊直接加我的 LINE</p>
-            </a>
-            <a href="https://line.me/ti/p/L1iM3COUPl" target="_blank" class="link-card">
-                <h3>聯絡管管</h3>
-                <p>點擊直接加管理員 LINE</p>
-            </a>
-        </main>
-
-        <!-- ==================== 分頁 2: 專屬房間 (密碼 0126) ==================== -->
-        <main id="tab-vip" class="tab-content">
-            <!-- 密碼輸入框 -->
-            <div id="lock-screen" class="lock-box">
-                <h3>🔒 此為專屬房間</h3>
-                <p style="font-size:12px; color:#888;">請輸入密碼以進入專屬包廂</p>
-                <input type="password" id="pwd-input" placeholder="請輸入4位數密碼">
-                <br>
-                <button onclick="checkPassword()">確認解鎖</button>
-                <p id="error-msg" style="color:#ff2d55; font-size:12px; margin-top:10px;"></p>
-            </div>
-
-            <!-- 解鎖後的房間內容 -->
-            <div id="unlocked-rooms" style="display: none;">
-                <div class="lock-header">
-                    <span style="color:#2ecc71;">● 專屬安全連線中</span>
-                    <button onclick="lockRooms()">重新鎖定</button>
-                </div>
-
+        <!-- 分頁內容區域 -->
+        <div class="tab-content">
+            
+            <!-- 分頁 1: VIP 語音對談 -->
+            <div id="tab-lounge" class="tab-panel active">
                 <div class="section-title">📞 HOTLINE ｜ 即時語音諮詢</div>
-                <a href="https://line.me/ti/g2/wxs8HU9a3dQJKFlBm1k-2qEYB3hPhIGrlFi6Ig?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="link-card">
-                    <h3>招待所 ➔ 電話專用頻道</h3>
-                    <p>點擊立刻進入語音聯絡，享受專人即時接待</p>
+                <a href="https://line.me/ti/g2/wxs8HU9a3dQJKFlBm1k-2qEYB3hPhIGrlFi6Ig?utm_source=invitation&amp;utm_medium=link_copy&amp;utm_campaign=default" target="_blank" class="hotline-card">
+                    <div class="hotline-icon">📞</div>
+                    <div class="hotline-info">
+                        <h3>招待所 ➔ 電話專用頻道</h3>
+                        <p>點擊立刻進入語音聯絡，享受專人即時接待</p>
+                    </div>
                 </a>
 
                 <div class="section-title">⚡ VIP Lounge ｜ 101 - 110</div>
                 <div class="room-grid">
-                    <a href="https://line.me/ti/g2/_pozcfjocgAIcl5oXuMb0s1RJ0uKrlmKp8L84g?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="room-item">101<span>ROOM</span></a>
-                    <a href="https://line.me/ti/g2/m4OF-0zcsdEALTD3QE4lpSkwfU8uZjZ3rsTqSQ?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="room-item">102<span>ROOM</span></a>
-                    <a href="https://line.me/ti/g2/k2lIL7GMrhOquBmdFLw6r7Wpu-K0a_QM_p6MHA?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="room-item">103<span>ROOM</span></a>
-                    <a href="https://line.me/ti/g2/hlx3ehotkyYz307eerHCDhezkqlkIo9XXyH9Dg?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="room-item">104<span>ROOM</span></a>
-                    <a href="https://line.me/ti/g2/5HBoo3LVf3zmvU49X_1AmrnUAlO949XHltnrvA?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="room-item">105<span>ROOM</span></a>
-                    <a href="https://li
+                    <a href="https://line.me/ti/g2/_pozcfjocgAIcl5oXuMb0s1RJ0uKrlmKp8L84g?utm_source=invitation&amp;utm_medium=link_copy&amp;utm_campaign=default" target="_blank" class="room-btn">101<span>ROOM</span></a>
+                    <a href="https://line.me/ti/g2/m4OF-0zcsdEALTD3QE4lpSkwfU8uZjZ3rsTqSQ?utm_source=invitation&amp;utm_medium=link_copy&amp;utm_campaign=default" target="_blank" class="room-btn">102<span>ROOM</span></a>
+                    <a href="https://line.me/ti/g2/k2lIL7GMrhOquBmdFLw6r7Wpu-K0a_QM_p6MHA?utm_source=invitation&amp;utm_medium=link_co
