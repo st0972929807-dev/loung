@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>閒人案內所 ｜ 官方傳送門</title>
+    <style>
+        :root {
+            --bg-dark: #050308;
+            --neon-gold: #f59e0b;
+            --neon-purple: #a855f7;
+            --neon-orange: #f97316;
+            --neon-blue: #06b6d4;
+            --neon-pink: #ff2a5f;
+            --neon-cyan: #00f3ff;
+            --text-light: #ffffff;
+            --text-gray: #9c97aa;
+            --card-glass: rgba(13, 9, 24, 0.78);
+            --border-glow: rgba(168, 85, 247, 0.15);
+            --ease-premium: cubic-bezier(0.25, 1, 0.3, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(168, 85, 247, 0.28) 0%, transparent 50%),
+                radial-gradient(circle at 100% 20%, rgba(249, 115, 22, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 0% 80%, rgba(0, 243, 255, 0.12) 0%, transparent 50%);
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 50px 15px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* 高級數字矩陣微光底紋 */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 12, 32, 0.1) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(18, 12, 32, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 460px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 奢華動態標頭 */
+        .header {
+            margin-bottom: 35px;
+        }
+
+        .logo-container {
+            position: relative;
+            width: 94px;
+            height: 94px;
+            margin: 0 auto 20px;
+        }
+
+        .logo-pulse {
+            position: absolute;
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--neon-purple), var(--neon-cyan));
+            animation: pulseGlow 3s infinite alternate var(--ease-premium);
+            filter: blur(12px);
+            opacity: 0.9;
+        }
+
+        .logo-inner {
+            position: absolute;
+            top: 2px; left: 2px; right: 2px; bottom: 2px;
+            background: #0d061c;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 42px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: inset 0 0 25px rgba(168, 85, 247, 0.5);
+        }
+
+        .title {
+            font-size: 30px;
+            font-weight: 900;
+            letter-spacing: 5px;
+            margin-bottom: 8px;
+            background: linear-gradient(90deg, #ffffff 20%, var(--neon-gold), var(--neon-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 2px 12px rgba(245, 158, 11, 0.4));
+        }
+
+        .subtitle {
+            font-size: 11px;
+            color: var(--text-gray);
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            opacity: 0.7;
+        }
+
+        /* 頂級懸浮膠囊分頁導航 (Premium Pill Tabs) */
+        .tab-navigation {
+            display: flex;
+            background: rgba(10, 6, 20, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 6px;
+            margin-bottom: 35px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            gap: 4px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), inset 0 1px 2px rgba(255, 255, 255, 0.04);
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 13px 4px;
+            background: none;
+            border: none;
+            color: var(--text-gray);
+            font-size: 13px;
+            font-weight: 700;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            white-space: nowrap;
+            letter-spacing: 0.5px;
+            position: relative;
+        }
+
+        .tab-btn:hover {
+            color: #ffffff;
+        }
+
+        .tab-btn.active {
+            color: #ffffff;
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.4) 0%, rgba(0, 243, 255, 0.2) 100%);
+            border: 1px solid rgba(168, 85, 247, 0.45);
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+            transform: scale(1.03);
+        }
+
+        /* 深邃立體玻璃卡片盒 */
+        .card-box {
+            background: var(--card-glass);
+            border: 1px solid var(--border-glow);
+            border-radius: 28px;
+            padding: 26px 20px;
+            margin-bottom: 28px;
+            backdrop-filter: blur(35px);
+            -webkit-backdrop-filter: blur(35px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65), inset 0 1px 1px rgba(255, 255, 255, 0.03);
+            text-align: left;
+        }
+
+        .card-box.phone-box {
+            border-color: rgba(6, 182, 212, 0.35);
+            box-shadow: 0 0 35px rgba(6, 182, 212, 0.18), 0 20px 50px rgba(0, 0, 0, 0.65);
+        }
+
+        .card-header {
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--neon-gold);
+            margin-bottom: 22px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 12px rgba(245, 158, 11, 0.5);
+        }
+
+        .card-header.blue-header {
+            color: var(--neon-blue);
+            text-shadow: 0 0 12px rgba(6, 182, 212, 0.5);
+        }
+
+        .card-header::after {
+            content: '';
+            flex-grow: 1;
+            height: 1px;
+            background: linear-gradient(to right, rgba(245, 158, 11, 0.4), transparent);
+        }
+
+        .card-header.blue-header::after {
+            background: linear-gradient(to right, rgba(6, 182, 212, 0.4), transparent);
+        }
+
+        /* 傳送門生動流光卡片 */
+        .link-card {
+            display: flex;
+            align-items: center;
+            padding: 22px 24px;
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 22px;
+            text-decoration: none;
+            color: #ffffff;
+            margin-bottom: 18px;
+            transition: var(--ease-premium) 0.4s;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        /* 高階玻璃反光折射 */
+        .link-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -150%;
+            width: 100%; height: 100%;
+            background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+            transition: 0.55s ease;
+        }
+
+        .link-card:hover::before, .link-card:active::before {
+            left: 150%;
+        }
+
+        /* 媒合大廳：微光日落橘外框 */
+        .link-card.match-card {
+            border: 1px solid rgba(249, 115, 22, 0.35);
+            background: linear-gradient(90deg, rgba(249, 115, 22, 0.08) 0%, rgba(18, 12, 32, 0.4) 100%);
+        }
+        .link-card.match-card:hover, .link-card.match-card:active {
+            border-color: var(--neon-orange);
+            transform: translateY(-5px) scale(1.015);
+            box-shadow: 0 10px 30px rgba(249, 115, 22, 0.35);
+        }
+
+        /* 聊天室：神祕魔幻紫外框 */
+        .link-card.chat-card {
+            border: 1px solid rgba(168, 85, 247, 0.35);
+            background: linear-gradient(90deg, rgba(168, 85, 247, 0.08) 0%, rgba(18, 12, 32, 0.4) 100%);
+        }
+        .link-card.chat-card:hover, .link-card.chat-card:active {
+            border-color: var(--neon-purple);
+            transform: translateY(-5px) scale(1.015);
+            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.35);
+        }
+
+        /* 行政會議室：內斂鈦金灰 */
+        .link-card.room-card {
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.005);
+        }
+        .link-card.room-card:hover, .link-card.room-card:active {
+            border-color: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.03);
+            transform: translateY(-3px);
+        }
+
+        .link-icon {
+            font-size: 28px;
+            margin-right: 20px;
+            width: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .match-card .link-icon { filter: drop-shadow(0 0 8px var(--neon-orange)); }
+        .chat-card .link-icon { filter: drop-shadow(0 0 8px var(--neon-purple)); }
+
+        .link-content {
+            text-align: left;
+            flex-grow: 1;
+        }
+
+        .link-title {
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        .link-desc {
+            font-size: 12px;
+            color: #aaa2b5;
+        }
+
+        .badge {
+            font-size: 10px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-left: 10px;
+            background-c
