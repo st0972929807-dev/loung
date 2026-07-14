@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>閒人庵</title>
+    <title>閒人案內所｜官方聯絡傳送門</title>
     <style>
         /* 基礎樣式重設與韓系、港風復古感極簡配色 */
         * {
@@ -156,6 +156,95 @@
             margin-top: 10px;
             display: none;
         }
+
+        /* 條款專屬內頁樣式 */
+        .policy-container {
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 40px 24px;
+            color: #e0e0e0;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .policy-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .policy-header h1 {
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .policy-header p {
+            color: #8e8e93;
+            font-size: 14px;
+        }
+
+        .policy-section {
+            background-color: #1c1c1e;
+            border: 1px solid #2c2c2e;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .policy-title {
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border-left: 3px solid #ffffff;
+            padding-left: 12px;
+        }
+
+        .policy-list {
+            list-style: none;
+        }
+
+        .policy-list li {
+            margin-bottom: 18px;
+            padding-bottom: 18px;
+            border-bottom: 1px dashed #2c2c2e;
+        }
+
+        .policy-list li:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .step-num {
+            display: inline-block;
+            color: #ffffff;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .step-title {
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 6px;
+        }
+
+        .step-desc {
+            color: #a1a1a6;
+            padding-left: 20px;
+        }
+
+        .step-desc span {
+            color: #ff453a; /* 紅色強調 */
+            font-weight: 500;
+        }
+
+        .step-desc strong {
+            color: #ffffff;
+        }
     </style>
 </head>
 <body>
@@ -165,7 +254,7 @@
         <ul class="nav-tabs">
             <li><button class="tab-btn active" onclick="switchTab(0)">首頁公告</button></li>
             <li><button class="tab-btn" onclick="switchTab(1)">專屬房間</button></li>
-            <li><button class="tab-btn" onclick="switchTab(2)">會員專區</button></li>
+            <li><button class="tab-btn" onclick="switchTab(2)">交付與退費政策</button></li>
         </ul>
     </header>
 
@@ -191,80 +280,51 @@
             <iframe id="tab-1" style="width:100%; height:100%; border:none; display:none;" src="https://6a561a77fa80380008fa8372--phenomenal-chaja-07e7cf.netlify.app/"></iframe>
         </div>
 
-        <!-- 分頁三：自訂內容 (可以做為會員規範或公告) -->
-        <div id="tab-2" class="tab-content" style="padding: 40px 20px; background-color: #121212; overflow-y: auto; text-align: center;">
-            <div style="max-width: 600px; margin: 0 auto;">
-                <h1 style="color: #fff; margin-bottom: 20px; font-weight: 500;">閒人出租 會員專區</h1>
-                <hr style="border: 0; border-top: 1px solid #2c2c2e; margin-bottom: 30px;">
-                <p style="color: #a1a1a6; line-height: 1.8; margin-bottom: 20px; text-align: left;">
-                    歡迎來到閒人出租會員專區。在這裡，您可以享受專屬的陪伴預約服務與個人化調整。
-                </p>
-                <p style="color: #a1a1a6; line-height: 1.8; margin-bottom: 20px; text-align: left;">
-                    若您尚未取得專屬密碼，或對服務條款、預約流程有任何疑問，請隨時透過官方社群平台與我們聯繫。
-                </p>
-                <div style="margin-top: 40px; padding: 20px; background-color: #1c1c1e; border: 1px solid #2c2c2e; border-radius: 8px;">
-                    <span style="color: #8e8e93; font-size: 14px;">Xianren Anneisuo © 2026</span>
+        <!-- 分頁三：交付及退費政策 (直接從專屬房間提取取代) -->
+        <div id="tab-2" class="tab-content" style="background-color: #121212; overflow-y: auto;">
+            <div class="policy-container">
+                <div class="policy-header">
+                    <h1>閒人案內所 ｜ 服務交付與退款政策</h1>
+                    <p>Xianren Anneisuo Service Terms & Policy</p>
                 </div>
-            </div>
-        </div>
 
-    </div>
+                <!-- 一、服務預約與建立服務之 SOP -->
+                <div class="policy-section">
+                    <div class="policy-title">一、服務預約與建立服務之 SOP</div>
+                    <ul class="policy-list">
+                        <li>
+                            <div class="step-title"><span class="step-num">1.</span>客戶線上預約</div>
+                            <div class="step-desc">客戶透過官方管道諮詢，並選擇所需的生活陪伴項目（如：探店飯友、遊戲陪玩、語意傾聽）。</div>
+                        </li>
+                        <li>
+                            <div class="step-title"><span class="step-num">2.</span>雙方合意與守則確認</div>
+                            <div class="step-desc">平台提供詳細價目表與《服務守則》（內含：<span>嚴禁肢體接觸</span>、車內禁菸、違規將立即終止服務等規範）。客戶確認同意後，方可進入付款程序。</div>
+                        </li>
+                        <li>
+                            <div class="step-title"><span class="step-num">3.</span>金流支付（訂金/全額）</div>
+                            <div class="step-desc">客戶透過金流系統支付服務費用（或支付 30% 訂金+車資）。付款完成後，系統正式建立訂單並鎖定夥伴出勤時間。</div>
+                        </li>
+                        <li>
+                            <div class="step-title"><span class="step-num">4.</span>平台指派與服務履行</div>
+                            <div class="step-desc">平台指派陪伴夥伴依約前往指定公共場所（如餐廳、咖啡廳）履行實體陪伴服務，或於線上進行陪玩與語音互動。</div>
+                        </li>
+                        <li>
+                            <div class="step-title"><span class="step-num">5.</span>服務確認與結案</div>
+                            <div class="step-desc">服務完成後，夥伴與客戶互相回報。平台於後台對帳系統標記「服務完成」，案件結案。</div>
+                        </li>
+                    </ul>
+                </div>
 
-    <script>
-        let isUnlocked = false; // 紀錄密碼是否已成功解鎖
-
-        function switchTab(index) {
-            // 隱藏所有分頁與按鈕激活狀態
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.remove('active');
-            });
-
-            // 激活點選的按鈕
-            document.querySelectorAll('.tab-btn')[index].classList.add('active');
-
-            if (index === 0) {
-                document.getElementById('tab-0').classList.add('active');
-            } else if (index === 1) {
-                document.getElementById('tab-1-container').classList.add('active');
-                // 如果已經解鎖過，直接顯示內容並隱藏鎖定畫面
-                if (isUnlocked) {
-                    document.getElementById('lock-screen').style.display = 'none';
-                    document.getElementById('tab-1').style.display = 'block';
-                } else {
-                    document.getElementById('lock-screen').style.display = 'flex';
-                    document.getElementById('tab-1').style.display = 'none';
-                    document.getElementById('pwd-input').focus();
-                }
-            } else if (index === 2) {
-                document.getElementById('tab-2').classList.add('active');
-            }
-        }
-
-        function checkPassword() {
-            const input = document.getElementById('pwd-input').value;
-            const errorMsg = document.getElementById('error-message');
-
-            if (input === '0126') {
-                isUnlocked = true;
-                errorMsg.style.display = 'none';
-                
-                // 動態淡出鎖定畫面，顯示 iframe 內容
-                document.getElementById('lock-screen').style.display = 'none';
-                document.getElementById('tab-1').style.display = 'block';
-            } else {
-                errorMsg.style.display = 'block';
-                document.getElementById('pwd-input').value = '';
-                document.getElementById('pwd-input').focus();
-            }
-        }
-
-        // 支援在密碼輸入框按「Enter」直接送出
-        document.getElementById('pwd-input').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                checkPassword();
-            }
-        });
-    </script>
-</body>
-</html>
+                <!-- 二、最長預付期 -->
+                <div class="policy-section">
+                    <div class="policy-title">二、最長預付期</div>
+                    <ul class="policy-list">
+                        <li>
+                            <div class="step-title">最長預付期限</div>
+                            <div class="step-desc">本平台之服務預約，最長預付期以<span>「1個月（30天）」</span>為限。</div>
+                        </li>
+                        <li>
+                            <div class="step-title">控管機制</div>
+                            <div class="step-desc">客戶下單預約之時間，僅能選擇自付款日起算 30 天內之檔期，不接受超過 30 天以上之遠期預約，以降低預收款項之延遲交付風險。</div>
+                        </li>
+                    </ul>
