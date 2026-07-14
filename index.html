@@ -3,353 +3,301 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 網頁名稱完美設定 -->
     <title>閒人案內所｜官方聯絡傳送門</title>
-    
-    <!-- 引入 Google Fonts 與 Font Awesome 圖標 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <style>
-        /* ==================== CSS 樣式美化 (Cyber Neon & 港風美學) ==================== */
-        :root {
-            --bg-dark: #0a0c10;
-            --neon-pink: #ff2d55;
-            --neon-blue: #00f0ff;
-            --neon-purple: #9d4edd;
-            --glass-bg: rgba(20, 24, 33, 0.7);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --text-primary: #f5f6f8;
-            --text-muted: #8e9cae;
-            --gold: #ffb703;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Noto Sans TC', sans-serif;
-        }
-
+        /* 極簡黑色質感風格 */
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-primary);
-            min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
-            padding-bottom: 60px;
-        }
-
-        /* 背景流動霓虹光暈 */
-        .bg-glow-1 {
-            position: fixed;
-            top: -10%;
-            left: -10%;
-            width: 50vw;
-            height: 50vw;
-            background: radial-gradient(circle, rgba(255, 45, 85, 0.15) 0%, rgba(0,0,0,0) 70%);
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        .bg-glow-2 {
-            position: fixed;
-            bottom: -10%;
-            right: -10%;
-            width: 50vw;
-            height: 50vw;
-            background: radial-gradient(circle, rgba(0, 240, 255, 0.12) 0%, rgba(0,0,0,0) 70%);
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        /* 主容器 */
-        .container {
-            max-width: 650px;
-            margin: 0 auto;
-            padding: 30px 15px;
-        }
-
-        /* 網頁標頭 */
-        .main-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .logo-wrapper {
-            width: 85px;
-            height: 85px;
-            background: radial-gradient(circle, #24142c 0%, #100b16 100%);
-            border: 2px solid var(--neon-pink);
-            border-radius: 50%;
+            background-color: #121212;
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
             display: flex;
-            align-items: center;
             justify-content: center;
-            margin: 0 auto 15px;
-            box-shadow: 0 0 15px rgba(255, 45, 85, 0.4);
         }
 
-        .ghost-icon {
-            font-size: 38px;
-            animation: floatGhost 3s ease-in-out infinite;
+        .container {
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
         }
 
-        @keyframes floatGhost {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
-        }
-
-        .main-header h1 {
-            font-size: 28px;
-            font-weight: 900;
-            letter-spacing: 2px;
-            background: linear-gradient(45deg, var(--text-primary), var(--neon-pink));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 6px;
-        }
-
-        .main-header .subtitle {
-            font-size: 13px;
-            color: var(--text-muted);
+        h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
             letter-spacing: 1px;
         }
 
-        /* 分頁導覽列 */
-        .tab-navigation {
-            display: flex;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            padding: 6px;
+        .subtitle {
+            color: #888888;
+            font-size: 14px;
             margin-bottom: 25px;
-            backdrop-filter: blur(10px);
+        }
+
+        /* 簡單的分頁按鈕 */
+        .tab-nav {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 25px;
         }
 
         .tab-btn {
             flex: 1;
-            background: transparent;
-            border: none;
-            color: var(--text-muted);
-            padding: 12px 6px;
-            font-size: 14px;
-            font-weight: 700;
-            cursor: pointer;
+            padding: 12px 5px;
+            background-color: #222222;
+            color: #888888;
+            border: 1px solid #333333;
             border-radius: 8px;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .tab-btn:hover {
-            color: var(--text-primary);
-            background: rgba(255, 255, 255, 0.03);
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 13px;
         }
 
         .tab-btn.active {
-            background: linear-gradient(135deg, var(--neon-pink) 0%, var(--neon-purple) 100%);
-            color: #fff;
-            box-shadow: 0 4px 15px rgba(255, 45, 85, 0.3);
+            background-color: #ff2d55;
+            color: #ffffff;
+            border-color: #ff2d55;
         }
 
-        /* 分頁切換基礎 */
+        /* 分頁顯示控制 */
         .tab-content {
             display: none;
+            text-align: left;
         }
 
         .tab-content.active {
             display: block;
-            animation: fadeIn 0.4s ease forwards;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* 連結區塊樣式 */
-        .link-section {
-            margin-bottom: 25px;
-        }
-
+        /* 連結卡片樣式 */
         .section-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .decorator-line {
-            width: 4px;
-            height: 18px;
-            background: var(--neon-pink);
-            border-radius: 2px;
-            box-shadow: 0 0 8px var(--neon-pink);
-        }
-
-        .section-title h2 {
-            font-size: 15px;
-            font-weight: 700;
-            color: var(--text-muted);
-            letter-spacing: 1px;
-        }
-
-        /* 傳送門連結卡片 */
-        .links-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
+            font-size: 14px;
+            color: #ff2d55;
+            margin: 20px 0 10px 0;
+            border-left: 3px solid #ff2d55;
+            padding-left: 8px;
+            font-weight: bold;
         }
 
         .link-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 14px;
-            padding: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            text-decoration: none;
-            color: var(--text-primary);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            backdrop-filter: blur(10px);
-        }
-
-        .link-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, rgba(255, 45, 85, 0.05), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.5s ease;
-        }
-
-        .link-card:hover {
-            transform: translateY(-2px);
-            border-color: rgba(255, 45, 85, 0.4);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 10px rgba(255, 45, 85, 0.1);
-        }
-
-        .link-card:hover::before {
-            transform: translateX(0);
-        }
-
-        .link-card.highlight {
-            border-color: rgba(255, 45, 85, 0.3);
-            background: linear-gradient(135deg, rgba(20, 24, 33, 0.8) 0%, rgba(35, 20, 30, 0.8) 100%);
-        }
-
-        .card-content {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .icon-box {
-            width: 44px;
-            height: 44px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: block;
+            background-color: #1a1a1a;
+            border: 1px solid #2a2a2a;
             border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            color: var(--neon-blue);
+            padding: 15px;
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: #ffffff;
         }
 
-        .link-card.highlight .icon-box {
-            color: var(--neon-pink);
-            background: rgba(255, 45, 85, 0.08);
-            border-color: rgba(255, 45, 85, 0.2);
-        }
-
-        .text-box h3 {
+        .link-card h3 {
+            margin: 0 0 5px 0;
             font-size: 15px;
-            font-weight: 700;
-            margin-bottom: 4px;
         }
 
-        .text-box p {
+        .link-card p {
+            margin: 0;
             font-size: 12px;
-            color: var(--text-muted);
+            color: #888888;
         }
 
-        .arrow-icon {
-            font-size: 13px;
-            color: var(--text-muted);
-            transition: transform 0.3s ease;
+        /* 專屬房間解鎖樣式 */
+        .lock-box {
+            background-color: #1a1a1a;
+            border: 1px solid #ff2d55;
+            border-radius: 12px;
+            padding: 30px 20px;
+            text-align: center;
         }
 
-        .link-card:hover .arrow-icon {
-            transform: translateX(3px);
-            color: var(--text-primary);
+        .lock-box input {
+            width: 80%;
+            padding: 10px;
+            margin: 15px 0;
+            border-radius: 6px;
+            border: 1px solid #333333;
+            background-color: #000000;
+            color: #ffffff;
+            text-align: center;
+            font-size: 16px;
         }
 
-        .badge {
-            position: absolute;
-            top: 0;
-            right: 0;
-            background: var(--neon-pink);
-            color: #fff;
-            font-size: 9px;
-            font-weight: 900;
-            padding: 3px 10px;
-            border-bottom-left-radius: 10px;
-            letter-spacing: 1px;
+        .lock-box button {
+            background-color: #ff2d55;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
         }
 
-        .badge.admin {
-            background: var(--neon-purple);
-        }
-
-        /* 諮詢區塊 (一對一) */
-        .contact-grid {
+        /* VIP 包廂網格 */
+        .room-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-top: 15px;
         }
 
-        .contact-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 14px;
-            padding: 20px;
+        .room-item {
+            background-color: #222222;
+            border: 1px solid #333333;
+            border-radius: 8px;
+            padding: 15px 5px;
             text-align: center;
             text-decoration: none;
-            color: var(--text-primary);
-            transition: all 0.3s ease;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 14px;
         }
 
-        .contact-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        .room-item span {
+            display: block;
+            font-size: 9px;
+            color: #00f0ff;
+            margin-top: 2px;
         }
 
-        .contact-card.boss:hover {
-            border-color: var(--neon-blue);
-            box-shadow: 0 8px 20px rgba(0, 240, 255, 0.15);
-        }
-
-        .contact-card.admin:hover {
-            border-color: var(--neon-purple);
-            box-shadow: 0 8px 20px rgba(157, 78, 221, 0.15);
-        }
-
-        .contact-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            margin: 0 auto 12px;
+        .lock-header {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
+            background-color: #1a1a1a;
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            font-size: 12px;
+        }
+
+        .lock-header button {
+            background: none;
+            border: 1px solid #555555;
+            color: #888888;
+            padding: 3px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* 政策與條款排版 */
+        .policy-block {
+            background-color: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+
+        .policy-block h3 {
+            margin-top: 0;
+            font-size: 15px;
+            color: #ffffff;
+            border-bottom: 1px solid #2a2a2a;
+            padding-bottom: 8px;
+        }
+
+        .policy-block ol, .policy-block ul {
+            padding-left: 20px;
+            font-size: 13px;
+            color: #aaaaaa;
+            line-height: 1.6;
+        }
+
+        .policy-block li {
+            margin-bottom: 10px;
+        }
+
+        .alert-text {
+            color: #ff2d55;
+            font-weight: bold;
+        }
+
+        footer {
+            margin-top: 30px;
+            font-size: 11px;
+            color: #555555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- 標頭 -->
+        <header>
+            <h1>👻 閒人案內所</h1>
+            <p class="subtitle">官方聯絡傳送門</p>
+        </header>
+
+        <!-- 分頁切換選單 -->
+        <nav class="tab-nav">
+            <button class="tab-btn active" onclick="showTab('home')">首頁公告</button>
+            <button class="tab-btn" onclick="showTab('vip')">專屬房間</button>
+            <button class="tab-btn" onclick="showTab('policy')">交付與退費政策</button>
+        </nav>
+
+        <!-- ==================== 分頁 1: 首頁公告 ==================== -->
+        <main id="tab-home" class="tab-content active">
+            <div class="section-title">主打服務 ｜ 媒合專區</div>
+            <a href="https://line.me/ti/g2/HjSXyaP1srrEd-vHV9h9uxaHtc4Q-NC4Z3VsXg?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="link-card">
+                <h3>求租 ． 出租媒合</h3>
+                <p>尋找陪伴、上架出租，請進此群</p>
+            </a>
+            <a href="https://line.me/ti/g2/NHXeqbaUztcj7Hs_c8aXZWObCMAvAZoB2kAACQ?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="link-card">
+                <h3>會議室（限出租者）</h3>
+                <p>內部行政討論、重要通知專區</p>
+            </a>
+
+            <div class="section-title">社群交流 ｜ 互動空間</div>
+            <a href="https://line.me/ti/g2/neX2NWHUb5KNngE6IKt7qj_1jlHjYuUON-k85w?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="link-card">
+                <h3>閒人聊天室 👻</h3>
+                <p>日常吹水、找同好，最放鬆的溫馨角落</p>
+            </a>
+            <a href="https://line.me/ti/g2/wxs8HU9a3dQJKFlBm1k-2qEYB3hPhIGrlFi6Ig?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="link-card">
+                <h3>招待所（電話專用）</h3>
+                <p>專供語音聯絡、即時語音招待使用</p>
+            </a>
+
+            <div class="section-title">專人諮詢 ｜ 一對一聯絡</div>
+            <a href="https://line.me/ti/p/mR19KggePp" target="_blank" class="link-card">
+                <h3>聯絡所長</h3>
+                <p>點擊直接加我的 LINE</p>
+            </a>
+            <a href="https://line.me/ti/p/L1iM3COUPl" target="_blank" class="link-card">
+                <h3>聯絡管管</h3>
+                <p>點擊直接加管理員 LINE</p>
+            </a>
+        </main>
+
+        <!-- ==================== 分頁 2: 專屬房間 (密碼 0126) ==================== -->
+        <main id="tab-vip" class="tab-content">
+            <!-- 密碼輸入框 -->
+            <div id="lock-screen" class="lock-box">
+                <h3>🔒 此為專屬房間</h3>
+                <p style="font-size:12px; color:#888;">請輸入密碼以進入專屬包廂</p>
+                <input type="password" id="pwd-input" placeholder="請輸入4位數密碼">
+                <br>
+                <button onclick="checkPassword()">確認解鎖</button>
+                <p id="error-msg" style="color:#ff2d55; font-size:12px; margin-top:10px;"></p>
+            </div>
+
+            <!-- 解鎖後的房間內容 -->
+            <div id="unlocked-rooms" style="display: none;">
+                <div class="lock-header">
+                    <span style="color:#2ecc71;">● 專屬安全連線中</span>
+                    <button onclick="lockRooms()">重新鎖定</button>
+                </div>
+
+                <div class="section-title">📞 HOTLINE ｜ 即時語音諮詢</div>
+                <a href="https://line.me/ti/g2/wxs8HU9a3dQJKFlBm1k-2qEYB3hPhIGrlFi6Ig?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="link-card">
+                    <h3>招待所 ➔ 電話專用頻道</h3>
+                    <p>點擊立刻進入語音聯絡，享受專人即時接待</p>
+                </a>
+
+                <div class="section-title">⚡ VIP Lounge ｜ 101 - 110</div>
+                <div class="room-grid">
+                    <a href="https://line.me/ti/g2/_pozcfjocgAIcl5oXuMb0s1RJ0uKrlmKp8L84g?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="room-item">101<span>ROOM</span></a>
+                    <a href="https://line.me/ti/g2/m4OF-0zcsdEALTD3QE4lpSkwfU8uZjZ3rsTqSQ?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="room-item">102<span>ROOM</span></a>
+                    <a href="https://line.me/ti/g2/k2lIL7GMrhOquBmdFLw6r7Wpu-K0a_QM_p6MHA?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="room-item">103<span>ROOM</span></a>
+                    <a href="https://line.me/ti/g2/hlx3ehotkyYz307eerHCDhezkqlkIo9XXyH9Dg?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="room-item">104<span>ROOM</span></a>
+                    <a href="https://line.me/ti/g2/5HBoo3LVf3zmvU49X_1AmrnUAlO949XHltnrvA?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="room-item">105<span>ROOM</span></a>
+                    <a href="https://li
