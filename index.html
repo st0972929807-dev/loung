@@ -1,348 +1,488 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>閒人案內所 👻 ｜ 頂級生活陪伴入口門戶</title>
-    <!-- 引入 Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <!-- 引入 FontAwesome 圖示 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --bg-dark: #0b0c10;
-            --bg-card: #1f2833;
-            --neon-blue: #66fcf1;
-            --neon-purple: #da22ff;
-            --neon-pink: #ff007f;
-            --text-main: #ffffff;
-            --text-muted: #c5a880;
-            --text-desc: #a5b1c2;
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>閒人案內所 ｜ 頂級生活陪伴平台</title>
+<style>
+:root {
+--bg-dark: #06040a;
+--neon-gold: #f59e0b;
+--neon-purple: #a855f7;
+--neon-orange: #f97316;
+--neon-blue: #06b6d4;
+--text-light: #ffffff;
+--text-gray: #a7a2b5;
+--card-glass: rgba(15, 11, 25, 0.75);
+--border-glow: rgba(168, 85, 247, 0.25);
+}
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Noto Sans TC', 'Poppins', sans-serif;
-        }
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif;
+-webkit-tap-highlight-color: transparent;
+}
 
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            overflow-x: hidden;
-            /* 修正：使用更穩定的背景漸層寫法，避免特定瀏覽器黑屏 */
-            background-image: radial-gradient(circle at top, #1f2833 0%, #0b0c10 70%);
-            background-attachment: fixed;
-        }
+body {
+background-color: var(--bg-dark);
+background-image:
+radial-gradient(circle at 50% 0%, rgba(168, 85, 247, 0.2) 0%, transparent 50%),
+radial-gradient(circle at 100% 30%, rgba(249, 115, 22, 0.15) 0%, transparent 40%),
+radial-gradient(circle at 0% 80%, rgba(138, 75, 245, 0.15) 0%, transparent 50%);
+color: var(--text-light);
+min-height: 100vh;
+display: flex;
+justify-content: center;
+align-items: flex-start;
+padding: 40px 15px;
+overflow-x: hidden;
+}
 
-        /* 頂部 Header */
-        header {
-            text-align: center;
-            padding: 3.5rem 1rem 2rem;
-            position: relative;
-        }
+.container {
+width: 100%;
+max-width: 480px;
+text-align: center;
+position: relative;
+z-index: 1;
+}
 
-        .logo-area {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 1rem;
-        }
+/* 華麗動態標頭 */
+.header {
+margin-bottom: 25px;
+}
 
-        .logo-glow {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
-            filter: blur(25px);
-            opacity: 0.6;
-            border-radius: 50%;
-            animation: pulse 3s infinite;
-        }
+.logo-container {
+position: relative;
+width: 90px;
+height: 90px;
+margin: 0 auto 15px;
+}
 
-        .logo-icon {
-            font-size: 3rem;
-            position: relative;
-            z-index: 1;
-            animation: float 4s ease-in-out infinite;
-        }
+.logo-pulse {
+position: absolute;
+width: 100%; height: 100%;
+border-radius: 50%;
+background: linear-gradient(135deg, var(--neon-purple), var(--neon-orange));
+animation: pulseGlow 2s infinite alternate;
+filter: blur(8px);
+opacity: 0.8;
+}
 
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 900;
-            letter-spacing: 2px;
-            background: linear-gradient(to right, #fff, var(--neon-blue), var(--neon-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
-            filter: drop-shadow(0 2px 10px rgba(102, 252, 241, 0.3));
-        }
+.logo-inner {
+position: absolute;
+top: 2px; left: 2px; right: 2px; bottom: 2px;
+background: #120c1f;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 38px;
+border: 1px solid rgba(255, 255, 255, 0.1);
+box-shadow: inset 0 0 15px rgba(168, 85, 247, 0.4);
+}
 
-        .subtitle {
-            font-size: 0.95rem;
-            color: var(--neon-blue);
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            font-weight: 500;
-            opacity: 0.9;
-        }
+.title {
+font-size: 28px;
+font-weight: 900;
+letter-spacing: 3px;
+margin-bottom: 6px;
+background: linear-gradient(90deg, #ffffff, var(--neon-gold), var(--neon-orange));
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+filter: drop-shadow(0 2px 8px rgba(245, 158, 11, 0.3));
+}
 
-        /* 主容器 */
-        main {
-            max-width: 900px;
-            width: 100%;
-            margin: 0 auto;
-            padding: 0 1.5rem 5rem;
-            flex-grow: 1;
-        }
+.subtitle {
+font-size: 12px;
+color: var(--text-gray);
+letter-spacing: 3px;
+text-transform: uppercase;
+}
 
-        /* 區塊標題 */
-        .section-title {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin: 2.5rem 0 1.25rem;
-            padding-left: 0.5rem;
-        }
+/* 賽博三分頁切換導航 */
+.tab-navigation {
+display: flex;
+background: rgba(255, 255, 255, 0.03);
+border: 1px solid rgba(255, 255, 255, 0.08);
+border-radius: 14px;
+padding: 4px;
+margin-bottom: 30px;
+backdrop-filter: blur(10px);
+gap: 4px;
+}
 
-        .section-title span {
-            width: 4px;
-            height: 24px;
-            background: linear-gradient(to bottom, var(--neon-blue), var(--neon-purple));
-            border-radius: 4px;
-            box-shadow: 0 0 10px var(--neon-blue);
-        }
+.tab-btn {
+flex: 1;
+padding: 12px 6px;
+background: none;
+border: none;
+color: var(--text-gray);
+font-size: 13px;
+font-weight: 700;
+border-radius: 10px;
+cursor: pointer;
+transition: all 0.3s ease;
+white-space: nowrap;
+}
 
-        .section-title h2 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            color: #fff;
-        }
+.tab-btn.active {
+color: #ffffff;
+background: linear-gradient(135deg, rgba(168, 85, 247, 0.3) 0%, rgba(249, 115, 22, 0.2) 100%);
+border: 1px solid rgba(168, 85, 247, 0.3);
+box-shadow: 0 0 12px rgba(168, 85, 247, 0.2);
+text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
 
-        /* 卡片列表樣式 */
-        .card-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.25rem;
-        }
+/* 內容面板控制 */
+.tab-panel {
+display: none;
+animation: fadeIn 0.4s ease forwards;
+}
 
-        @media (min-width: 600px) {
-            .card-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
+.tab-panel.active {
+display: block;
+}
 
-        .portal-card {
-            background: linear-gradient(135deg, rgba(31, 40, 51, 0.8), rgba(20, 26, 33, 0.9));
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 1.25rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            text-decoration: none;
-            color: inherit;
-            position: relative;
-            overflow: hidden;
-            transition: var(--transition);
-        }
+/* 卡片與容器樣式 */
+.card-box {
+background: var(--card-glass);
+border: 1px solid var(--border-glow);
+border-radius: 24px;
+padding: 24px 16px;
+margin-bottom: 25px;
+backdrop-filter: blur(25px);
+-webkit-backdrop-filter: blur(25px);
+box-shadow: 0 0 25px rgba(168, 85, 247, 0.15), inset 0 0 20px rgba(255, 255, 255, 0.02);
+text-align: left;
+}
 
-        .portal-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.03), transparent);
-            transform: translateX(-100%);
-            transition: 0.6s;
-        }
+.card-box.phone-box {
+border-color: rgba(6, 182, 212, 0.4);
+box-shadow: 0 0 25px rgba(6, 182, 212, 0.2);
+}
 
-        .portal-card:hover::before {
-            transform: translateX(100%);
-        }
+.card-header {
+font-size: 15px;
+font-weight: 800;
+color: var(--neon-gold);
+margin-bottom: 18px;
+display: flex;
+align-items: center;
+gap: 10px;
+letter-spacing: 2px;
+text-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
+}
 
-        .portal-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--neon-blue);
-            box-shadow: 0 8px 25px rgba(102, 252, 241, 0.15);
-        }
+.card-header.blue-header {
+color: var(--neon-blue);
+text-shadow: 0 0 10px rgba(6, 182, 212, 0.4);
+}
 
-        .card-left {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
+.card-header::after {
+content: '';
+flex-grow: 1;
+height: 2px;
+background: linear-gradient(to right, rgba(245, 158, 11, 0.5), transparent);
+}
 
-        .card-icon {
-            width: 45px;
-            height: 45px;
-            border-radius: 12px;
-            background: rgba(102, 252, 241, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--neon-blue);
-            font-size: 1.25rem;
-            border: 1px solid rgba(102, 252, 241, 0.2);
-            transition: var(--transition);
-        }
+.card-header.blue-header::after {
+background: linear-gradient(to right, rgba(6, 182, 212, 0.5), transparent);
+}
 
-        .portal-card:hover .card-icon {
-            background: var(--neon-blue);
-            color: #000;
-            box-shadow: 0 0 15px var(--neon-blue);
-        }
+/* 分組標題 */
+.section-title {
+font-size: 13px;
+text-transform: uppercase;
+letter-spacing: 2px;
+color: #8a7fa4;
+margin: 25px 0 12px;
+text-align: left;
+padding-left: 5px;
+font-weight: 700;
+display: flex;
+align-items: center;
+gap: 8px;
+}
 
-        .card-info h3 {
-            font-size: 1.05rem;
-            font-weight: 700;
-            margin-bottom: 0.25rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
+/* 連結列表 */
+.links-group {
+display: flex;
+flex-direction: column;
+gap: 14px;
+margin-bottom: 10px;
+}
 
-        .badge {
-            font-size: 0.7rem;
-            padding: 0.15rem 0.5rem;
-            border-radius: 20px;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
+/* 按鈕與卡片基礎 */
+.link-card {
+display: flex;
+align-items: center;
+padding: 16px 20px;
+background: rgba(255, 255, 255, 0.03);
+border: 1px solid rgba(255, 255, 255, 0.08);
+border-radius: 16px;
+text-decoration: none;
+color: #ffffff;
+transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+position: relative;
+overflow: hidden;
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
+}
 
-        .badge.hot {
-            background: rgba(255, 0, 127, 0.2);
-            color: var(--neon-pink);
-            border: 1px solid rgba(255, 0, 127, 0.3);
-        }
+.link-card:active, .link-card:hover {
+background: rgba(255, 255, 255, 0.08);
+border-color: var(--neon-purple);
+transform: translateY(-2px);
+box-shadow: 0 6px 20px rgba(168, 85, 247, 0.2);
+}
 
-        .badge.admin {
-            background: rgba(218, 34, 255, 0.2);
-            color: var(--neon-purple);
-            border: 1px solid rgba(218, 34, 255, 0.3);
-        }
+.link-card.primary {
+border-color: rgba(138, 75, 245, 0.4);
+background: linear-gradient(90deg, rgba(138, 75, 245, 0.12) 0%, rgba(255, 255, 255, 0.02) 100%);
+}
 
-        .card-info p {
-            font-size: 0.85rem;
-            color: var(--text-desc);
-        }
+.link-card.primary:active, .link-card.primary:hover {
+border-color: var(--neon-purple);
+box-shadow: 0 6px 20px rgba(138, 75, 245, 0.3);
+}
 
-        .card-arrow {
-            color: var(--text-desc);
-            font-size: 0.9rem;
-            transition: var(--transition);
-        }
+.link-icon {
+font-size: 22px;
+margin-right: 15px;
+width: 30px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
 
-        .portal-card:hover .card-arrow {
-            color: var(--neon-blue);
-            transform: translateX(3px);
-        }
+.link-content {
+text-align: left;
+flex-grow: 1;
+}
 
-        /* 專人諮詢聯絡區 (大卡片) */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.25rem;
-            margin-top: 1rem;
-        }
+.link-title {
+font-size: 16px;
+font-weight: 700;
+margin-bottom: 2px;
+color: #f1e9ff;
+}
 
-        @media (min-width: 600px) {
-            .contact-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
+.link-desc {
+font-size: 12px;
+color: var(--text-gray);
+}
 
-        .contact-card {
-            background: linear-gradient(135deg, rgba(31, 40, 51, 0.8), rgba(20, 26, 33, 0.9));
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 1.5rem;
-            text-align: center;
-            text-decoration: none;
-            color: inherit;
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.75rem;
-        }
+/* 限出租者標籤 */
+.badge {
+font-size: 10px;
+padding: 3px 8px;
+border-radius: 20px;
+font-weight: 700;
+margin-left: 10px;
+text-transform: uppercase;
+}
 
-        .contact-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--neon-purple);
-            box-shadow: 0 8px 25px rgba(218, 34, 255, 0.15);
-        }
+.badge-warning {
+background-color: rgba(249, 115, 22, 0.15);
+color: #ff8a5c;
+border: 1px solid rgba(249, 115, 22, 0.3);
+}
 
-        .contact-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: rgba(218, 34, 255, 0.1);
-            border: 2px solid rgba(218, 34, 255, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: var(--neon-purple);
-            transition: var(--transition);
-        }
+/* 專人聯絡雙欄排版 */
+.contact-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 12px;
+margin-top: 5px;
+}
 
-        .contact-card:hover .contact-avatar {
-            background: var(--neon-purple);
-            color: #fff;
-            box-shadow: 0 0 20px var(--neon-purple);
-        }
+.contact-card {
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 18px 10px;
+background: rgba(255, 255, 255, 0.03);
+border: 1px solid rgba(255, 255, 255, 0.06);
+border-radius: 16px;
+text-decoration: none;
+color: #ffffff;
+transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
+}
 
-        .contact-card h3 {
-            font-size: 1.15rem;
-            font-weight: 700;
-        }
+.contact-card:active, .contact-card:hover {
+background: linear-gradient(135deg, rgba(168, 85, 247, 0.15) 0%, rgba(249, 115, 22, 0.05) 100%);
+border-color: var(--neon-orange);
+transform: translateY(-2px);
+box-shadow: 0 6px 15px rgba(249, 115, 22, 0.2);
+}
 
-        .contact-card p {
-            font-size: 0.85rem;
-            color: var(--text-desc);
-        }
+.contact-avatar {
+width: 46px;
+height: 46px;
+border-radius: 50%;
+background: #120c1f;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 20px;
+margin-bottom: 10px;
+border: 1px solid rgba(255, 255, 255, 0.1);
+box-shadow: inset 0 0 10px rgba(168, 85, 247, 0.3);
+}
 
-        /* Hotline 專用橫幅 */
-        .hotline-banner {
-            background: linear-gradient(135deg, rgba(255, 0, 127, 0.15), rgba(31, 40, 51, 0.8));
-            border: 1px solid rgba(255, 0, 127, 0.3);
-            border-radius: 16px;
-            padding: 1.25rem;
-            margin-bottom: 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            text-decoration: none;
-            color: inherit;
-            transition: var(--transition);
-        }
+.contact-name {
+font-size: 14px;
+font-weight: 700;
+color: #f1e9ff;
+}
 
-        .hotline-banner:hover {
-            box-shadow: 0 5px 20px rgba(255, 0, 127, 0.25);
-            border-color: var(--neon-pink);
-        }
+/* 電話大按鈕樣式 */
+.primary-card {
+display: flex;
+align-items: center;
+padding: 20px;
+background: linear-gradient(90deg, rgba(6, 182, 212, 0.15) 0%, rgba(255, 255, 255, 0.02) 100%);
+border: 1.5px solid var(--neon-blue);
+border-radius: 18px;
+color: #ffffff;
+text-decoration: none;
+transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
+}
 
-        .hotline-left {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
+.primary-card:hover, .primary-card:active {
+background: linear-gradient(90deg, rgba(6, 182, 212, 0.25) 0%, rgba(168, 85, 247, 0.1) 100%);
+border-color: #ffffff;
+transform: translateY(-3px);
+box-shadow: 0 0 25px rgba(6, 182, 212, 0.4);
+}
 
-        .hotline-icon {
-            font-size: 2rem;
-            color: var(--neon-pink);
-            animation: pho
+.primary-icon {
+font-size: 26px;
+margin-right: 15px;
+filter: drop-shadow(0 0 5px var(--neon-blue));
+}
+
+.primary-title {
+font-size: 17px;
+font-weight: 800;
+color: #ffffff;
+letter-spacing: 1px;
+margin-bottom: 4px;
+}
+
+.primary-desc {
+font-size: 12px;
+color: #b2ced4;
+}
+
+/* 5欄網格房間按鈕 */
+.grid-rooms {
+display: grid;
+grid-template-columns: repeat(5, 1fr);
+gap: 8px;
+}
+
+.room-item {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+height: 52px;
+background: rgba(255, 255, 255, 0.03);
+border: 1px solid rgba(255, 255, 255, 0.08);
+border-radius: 14px;
+color: #e2dbe9;
+text-decoration: none;
+font-size: 14px;
+font-weight: 700;
+transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.room-item span {
+font-size: 8px;
+color: #7d758a;
+font-weight: 500;
+margin-top: 2px;
+}
+
+.room-item:hover, .room-item:active {
+background: linear-gradient(135deg, rgba(168, 85, 247, 0.2) 0%, rgba(249, 115, 22, 0.2) 100%);
+border-color: var(--neon-orange);
+color: #ffffff;
+transform: translateY(-4px) scale(1.05);
+box-shadow: 0 0 15px rgba(249, 115, 22, 0.4);
+}
+
+.room-item:hover span {
+color: #fbd5c0;
+}
+
+/* 語音對談行條 */
+.talk-list {
+display: flex;
+flex-direction: column;
+gap: 12px;
+}
+
+.talk-item {
+display: flex;
+align-items: center;
+padding: 16px 20px;
+background: linear-gradient(90deg, rgba(168, 85, 247, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+border: 1px solid rgba(168, 85, 247, 0.2);
+border-radius: 18px;
+color: #ffffff;
+text-decoration: none;
+transition: all 0.3s ease;
+position: relative;
+overflow: hidden;
+}
+
+.talk-item::before {
+content: '';
+position: absolute;
+top: 0; left: -100%;
+width: 100%; height: 100%;
+background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.2), transparent);
+transition: 0.6s linear;
+}
+
+.talk-item:hover::before {
+left: 100%;
+}
+
+.talk-icon {
+font-size: 20px;
+margin-right: 14px;
+color: var(--neon-purple);
+filter: drop-shadow(0 0 5px var(--neon-purple));
+}
+
+.talk-text {
+flex-grow: 1;
+font-size: 15px;
+font-weight: 700;
+color: #f1e9ff;
+letter-spacing: 1px;
+}
+
+.talk-arrow {
+font-size: 12px;
+color: #5d546c;
+transition: transform 0.3s ease;
+}
+
+.talk-item:hover, .talk-item:active {
+border-color: var(--neon-purple);
+background: linear-gradient(90deg, rgba(168, 85, 247, 0.15) 0%, rgba(249, 115, 22, 0.05) 100%);
+transform: translateX(4px);
+box-shadow: 0 0 15px rgba(168, 85, 247, 0.25);
+}
+
+.talk-item:hover .talk-arrow {
+c
