@@ -2,50 +2,148 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>閒人庵</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>閒人案內所 ｜ 官方傳送門</title>
     <style>
-        /* 基礎樣式重設與韓系、港風復古感極簡配色 */
+        :root {
+            --bg-dark: #050308;
+            --neon-gold: #f59e0b;
+            --neon-purple: #a855f7;
+            --neon-orange: #f97316;
+            --neon-blue: #06b6d4;
+            --neon-pink: #ff2a5f;
+            --neon-cyan: #00f3ff;
+            --text-light: #ffffff;
+            --text-gray: #9c97aa;
+            --card-glass: rgba(13, 9, 24, 0.78);
+            --border-glow: rgba(168, 85, 247, 0.15);
+            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-premium: cubic-bezier(0.25, 1, 0.3, 1);
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            background-color: #121212; /* 深色沉穩背景 */
-            color: #e0e0e0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-
-        /* 導覽列 */
-        header {
-            background-color: #1c1c1e;
-            border-bottom: 1px solid #2c2c2e;
-            padding: 10px 0;
-        }
-
-        .nav-tabs {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(168, 85, 247, 0.28) 0%, transparent 50%),
+                radial-gradient(circle at 100% 20%, rgba(249, 115, 22, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 0% 80%, rgba(0, 243, 255, 0.12) 0%, transparent 50%);
+            color: var(--text-light);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
-            gap: 10px;
-            list-style: none;
+            align-items: flex-start;
+            padding: 40px 15px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 12, 32, 0.1) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(18, 12, 32, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 460px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            margin-bottom: 35px;
+        }
+
+        .logo-container {
+            position: relative;
+            width: 94px;
+            height: 94px;
+            margin: 0 auto 20px;
+        }
+
+        .logo-pulse {
+            position: absolute;
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--neon-purple), var(--neon-cyan));
+            animation: pulseGlow 3s infinite alternate var(--ease-premium);
+            filter: blur(12px);
+            opacity: 0.9;
+        }
+
+        .logo-inner {
+            position: absolute;
+            top: 2px; left: 2px; right: 2px; bottom: 2px;
+            background: #0d061c;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 42px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: inset 0 0 25px rgba(168, 85, 247, 0.5);
+        }
+
+        .title {
+            font-size: 30px;
+            font-weight: 900;
+            letter-spacing: 5px;
+            margin-bottom: 8px;
+            background: linear-gradient(90deg, #ffffff 20%, var(--neon-gold), var(--neon-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 2px 12px rgba(245, 158, 11, 0.4));
+        }
+
+        .subtitle {
+            font-size: 11px;
+            color: var(--text-gray);
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            opacity: 0.7;
+        }
+
+        .tab-navigation {
+            display: flex;
+            background: rgba(10, 6, 20, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 6px;
+            margin-bottom: 35px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            gap: 4px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), inset 0 1px 2px rgba(255, 255, 255, 0.04);
         }
 
         .tab-btn {
+            flex: 1;
+            padding: 13px 4px;
             background: none;
             border: none;
-            color: #8e8e93;
-            padding: 10px 20px;
-            font-size: 16px;
-            font-weight: 500;
+            color: var(--text-gray);
+            font-size: 13px;
+            font-weight: 700;
+            border-radius: 14px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            border-bottom: 2px solid transparent;
+            transition: var(--transition-smooth);
+            white-space: nowrap;
+            letter-spacing: 0.5px;
+            position: relative;
         }
 
         .tab-btn:hover {
@@ -54,277 +152,153 @@
 
         .tab-btn.active {
             color: #ffffff;
-            border-bottom: 2px solid #ffffff; /* 經典白線指示器 */
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.4) 0%, rgba(0, 243, 255, 0.2) 100%);
+            border: 1px solid rgba(168, 85, 247, 0.45);
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+            transform: scale(1.03);
         }
 
-        /* 內容容器 */
-        .content-container {
-            flex: 1;
-            position: relative;
-            background-color: #000000;
+        .card-box {
+            background: var(--card-glass);
+            border: 1px solid var(--border-glow);
+            border-radius: 28px;
+            padding: 26px 20px;
+            margin-bottom: 28px;
+            backdrop-filter: blur(35px);
+            -webkit-backdrop-filter: blur(35px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65), inset 0 1px 1px rgba(255, 255, 255, 0.03);
+            text-align: left;
         }
 
-        .tab-content {
-            display: none;
-            width: 100%;
-            height: 100%;
-            border: none;
+        .card-box.phone-box {
+            border-color: rgba(6, 182, 212, 0.35);
+            box-shadow: 0 0 35px rgba(6, 182, 212, 0.18), 0 20px 50px rgba(0, 0, 0, 0.65);
         }
 
-        .tab-content.active {
-            display: block;
-        }
-
-        /* 密碼保護遮罩 */
-        .lock-screen {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #121212;
+        .card-header {
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--neon-gold);
+            margin-bottom: 22px;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            z-index: 10;
+            gap: 12px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 12px rgba(245, 158, 11, 0.5);
         }
 
-        .lock-card {
-            background-color: #1c1c1e;
-            border: 1px solid #2c2c2e;
-            padding: 40px 30px;
-            border-radius: 12px;
-            text-align: center;
-            max-width: 400px;
-            width: 90%;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        .card-header.blue-header {
+            color: var(--neon-blue);
+            text-shadow: 0 0 12px rgba(6, 182, 212, 0.5);
         }
 
-        .lock-card h2 {
-            font-size: 20px;
-            margin-bottom: 10px;
+        .card-header::after {
+            content: '';
+            flex-grow: 1;
+            height: 1px;
+            background: linear-gradient(to right, rgba(245, 158, 11, 0.4), transparent);
+        }
+
+        .card-header.blue-header::after {
+            background: linear-gradient(to right, rgba(6, 182, 212, 0.4), transparent);
+        }
+
+        .link-card {
+            display: flex;
+            align-items: center;
+            padding: 22px 24px;
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 22px;
+            text-decoration: none;
             color: #ffffff;
-            font-weight: 600;
-        }
-
-        .lock-card p {
-            color: #8e8e93;
-            font-size: 14px;
-            margin-bottom: 24px;
-        }
-
-        .password-input {
-            width: 100%;
-            padding: 12px;
-            background-color: #2c2c2e;
-            border: 1px solid #3a3a3c;
-            border-radius: 6px;
-            color: #ffffff;
-            font-size: 16px;
-            text-align: center;
-            letter-spacing: 4px;
-            margin-bottom: 16px;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-
-        .password-input:focus {
-            border-color: #8e8e93;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 12px;
-            background-color: #ffffff;
-            color: #000000;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-
-        .submit-btn:hover {
-            background-color: #e5e5e5;
-        }
-
-        .error-msg {
-            color: #ff453a;
-            font-size: 13px;
-            margin-top: 10px;
-            display: none;
-        }
-
-        /* 條款專屬內頁樣式 */
-        .policy-container {
-            max-width: 750px;
-            margin: 0 auto;
-            padding: 40px 24px;
-            color: #e0e0e0;
-            line-height: 1.8;
-            font-size: 15px;
-        }
-
-        .policy-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .policy-header h1 {
-            color: #ffffff;
-            font-size: 24px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            margin-bottom: 12px;
-        }
-
-        .policy-header p {
-            color: #8e8e93;
-            font-size: 14px;
-        }
-
-        .policy-section {
-            background-color: #1c1c1e;
-            border: 1px solid #2c2c2e;
-            border-radius: 12px;
-            padding: 30px;
-            margin-bottom: 30px;
-        }
-
-        .policy-title {
-            color: #ffffff;
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            border-left: 3px solid #ffffff;
-            padding-left: 12px;
-        }
-
-        .policy-list {
-            list-style: none;
-        }
-
-        .policy-list li {
             margin-bottom: 18px;
-            padding-bottom: 18px;
-            border-bottom: 1px dashed #2c2c2e;
+            transition: var(--ease-premium) 0.4s;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
         }
 
-        .policy-list li:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
+        .link-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -150%;
+            width: 100%; height: 100%;
+            background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+            transition: 0.55s ease;
         }
 
-        .step-num {
-            display: inline-block;
-            color: #ffffff;
-            font-weight: bold;
-            margin-right: 8px;
+        .link-card:hover::before, .link-card:active::before {
+            left: 150%;
         }
 
-        .step-title {
-            color: #ffffff;
-            font-weight: 600;
+        .link-card.match-card {
+            border: 1px solid rgba(249, 115, 22, 0.35);
+            background: linear-gradient(90deg, rgba(249, 115, 22, 0.08) 0%, rgba(18, 12, 32, 0.4) 100%);
+        }
+        .link-card.match-card:hover, .link-card.match-card:active {
+            border-color: var(--neon-orange);
+            transform: translateY(-5px) scale(1.015);
+            box-shadow: 0 10px 30px rgba(249, 115, 22, 0.35);
+        }
+
+        .link-card.chat-card {
+            border: 1px solid rgba(168, 85, 247, 0.35);
+            background: linear-gradient(90deg, rgba(168, 85, 247, 0.08) 0%, rgba(18, 12, 32, 0.4) 100%);
+        }
+        .link-card.chat-card:hover, .link-card.chat-card:active {
+            border-color: var(--neon-purple);
+            transform: translateY(-5px) scale(1.015);
+            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.35);
+        }
+
+        .link-card.room-card {
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.005);
+        }
+        .link-card.room-card:hover, .link-card.room-card:active {
+            border-color: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.03);
+            transform: translateY(-3px);
+        }
+
+        .link-icon {
+            font-size: 28px;
+            margin-right: 20px;
+            width: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .match-card .link-icon { filter: drop-shadow(0 0 8px var(--neon-orange)); }
+        .chat-card .link-icon { filter: drop-shadow(0 0 8px var(--neon-purple)); }
+
+        .link-content {
+            text-align: left;
+            flex-grow: 1;
+        }
+
+        .link-title {
             font-size: 16px;
-            margin-bottom: 6px;
+            font-weight: 800;
+            margin-bottom: 4px;
+            letter-spacing: 0.5px;
         }
 
-        .step-desc {
-            color: #a1a1a6;
-            padding-left: 20px;
+        .link-desc {
+            font-size: 12px;
+            color: #aaa2b5;
         }
 
-        .step-desc span {
-            color: #ff453a; /* 紅色強調 */
-            font-weight: 500;
-        }
-
-        .step-desc strong {
-            color: #ffffff;
-        }
-    </style>
-</head>
-<body>
-
-    <!-- 頂部導覽分頁 -->
-    <header>
-        <ul class="nav-tabs">
-            <li><button class="tab-btn active" onclick="switchTab(0)">首頁公告</button></li>
-            <li><button class="tab-btn" onclick="switchTab(1)">專屬房間</button></li>
-            <li><button class="tab-btn" onclick="switchTab(2)">交付與退費政策</button></li>
-        </ul>
-    </header>
-
-    <!-- 內容展示區 -->
-    <div class="content-container">
-        
-        <!-- 分頁一：第一個網址 -->
-        <iframe id="tab-0" class="tab-content active" src="https://jazzy-jalebi-24488f.netlify.app/"></iframe>
-
-        <!-- 分頁二：第二個網址 (設有密碼鎖) -->
-        <div id="tab-1-container" class="tab-content" style="position: relative; height: 100%; width: 100%;">
-            <!-- 密碼鎖畫面 -->
-            <div id="lock-screen" class="lock-screen">
-                <div class="lock-card">
-                    <h2>🔒 閒人出租會員限定</h2>
-                    <p>此頁面僅限會員瀏覽，請輸入專屬密碼解鎖</p>
-                    <input type="password" id="pwd-input" class="password-input" placeholder="請輸入 4 位密碼" maxlength="8">
-                    <button class="submit-btn" onclick="checkPassword()">確認送出</button>
-                    <p id="error-message" class="error-msg">密碼錯誤，請重新輸入！</p>
-                </div>
-            </div>
-            <!-- 實際嵌入的第二個網址 -->
-            <iframe id="tab-1" style="width:100%; height:100%; border:none; display:none;" src="https://6a561a77fa80380008fa8372--phenomenal-chaja-07e7cf.netlify.app/"></iframe>
-        </div>
-
-        <!-- 分頁三：交付及退費政策 (直接從專屬房間提取取代) -->
-        <div id="tab-2" class="tab-content" style="background-color: #121212; overflow-y: auto;">
-            <div class="policy-container">
-                <div class="policy-header">
-                    <h1>閒人案內所 ｜ 服務交付與退款政策</h1>
-                    <p>Xianren Anneisuo Service Terms & Policy</p>
-                </div>
-
-                <!-- 一、服務預約與建立服務之 SOP -->
-                <div class="policy-section">
-                    <div class="policy-title">一、服務預約與建立服務之 SOP</div>
-                    <ul class="policy-list">
-                        <li>
-                            <div class="step-title"><span class="step-num">1.</span>客戶線上預約</div>
-                            <div class="step-desc">客戶透過官方管道諮詢，並選擇所需的生活陪伴項目（如：探店飯友、遊戲陪玩、語意傾聽）。</div>
-                        </li>
-                        <li>
-                            <div class="step-title"><span class="step-num">2.</span>雙方合意與守則確認</div>
-                            <div class="step-desc">平台提供詳細價目表與《服務守則》（內含：<span>嚴禁肢體接觸</span>、車內禁菸、違規將立即終止服務等規範）。客戶確認同意後，方可進入付款程序。</div>
-                        </li>
-                        <li>
-                            <div class="step-title"><span class="step-num">3.</span>金流支付（訂金/全額）</div>
-                            <div class="step-desc">客戶透過金流系統支付服務費用（或支付 30% 訂金+車資）。付款完成後，系統正式建立訂單並鎖定夥伴出勤時間。</div>
-                        </li>
-                        <li>
-                            <div class="step-title"><span class="step-num">4.</span>平台指派與服務履行</div>
-                            <div class="step-desc">平台指派陪伴夥伴依約前往指定公共場所（如餐廳、咖啡廳）履行實體陪伴服務，或於線上進行陪玩與語音互動。</div>
-                        </li>
-                        <li>
-                            <div class="step-title"><span class="step-num">5.</span>服務確認與結案</div>
-                            <div class="step-desc">服務完成後，夥伴與客戶互相回報。平台於後台對帳系統標記「服務完成」，案件結案。</div>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- 二、最長預付期 -->
-                <div class="policy-section">
-                    <div class="policy-title">二、最長預付期</div>
-                    <ul class="policy-list">
-                        <li>
-                            <div class="step-title">最長預付期限</div>
-                            <div class="step-desc">本平台之服務預約，最長預付期以<span>「1個月（30天）」</span>為限。</div>
-                        </li>
-                        <li>
-                            <div class="step-title">控管機制</div>
-                            <div class="step-desc">客戶下單預約之時間，僅能選擇自付款日起算 30 天內之檔期，不接受超過 30 天以上之遠期預約，以降低預收款項之延遲交付風險。</div>
-                        </li>
-                    </ul>
+        .badge {
+            font-size: 10px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-left: 10px;
+            background-color: rgba(235, 94, 40, 0.18);
+            color: #ff9a6e;
+            border: 1px solid rgba(235, 94, 40, 0.3);
+            letter
