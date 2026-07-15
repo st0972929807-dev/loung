@@ -1,19 +1,25 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>交付及退費政策 | 閒人安慰所</title>
-    <!-- 引入 Google Fonts 提升質感 -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title>閒人案內所 👻 | 頂級生活陪伴體驗</title>
+    <!-- 引入高品質 Google 字體 -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #5b7065; /* 溫和的灰綠色，營造陪伴的舒適感 */
-            --primary-light: #f4f6f5;
-            --text-dark: #2c3e50;
-            --text-muted: #7f8c8d;
-            --accent-color: #e67e22; /* 溫暖的橘色，用於強調重點 */
-            --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            --bg-color: #030712;
+            --card-bg: rgba(17, 24, 39, 0.7);
+            --card-border: rgba(102, 252, 241, 0.15);
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --accent-cyan: #00f2fe;
+            --accent-blue: #4facfe;
+            --accent-purple: #bd00ff;
+            --accent-pink: #ff007f;
+            --glass-bg: rgba(15, 23, 42, 0.6);
+            --nav-bg: rgba(17, 24, 39, 0.85);
+            --glow-color: rgba(0, 242, 254, 0.4);
         }
 
         * {
@@ -23,212 +29,306 @@
         }
 
         body {
-            font-family: 'Noto Sans TC', sans-serif;
-            background: var(--bg-gradient);
-            color: var(--text-dark);
-            line-height: 1.8;
-            padding: 40px 20px;
+            font-family: 'Noto Sans TC', 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(189, 0, 255, 0.08) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(0, 242, 254, 0.08) 0px, transparent 50%);
+            background-attachment: fixed;
+            color: var(--text-main);
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
         }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: #ffffff;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-        }
-
-        /* 麵包屑導航 */
-        .breadcrumb {
-            margin-bottom: 20px;
-            font-size: 0.9rem;
-        }
-        .breadcrumb a {
-            color: var(--primary-color);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        .breadcrumb a:hover {
-            text-decoration: underline;
-        }
-        .breadcrumb span {
-            color: var(--text-muted);
-            margin: 0 8px;
-        }
-
-        h1 {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 30px;
-            border-bottom: 2px solid var(--primary-light);
-            padding-bottom: 15px;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-
-        h2 {
-            font-size: 1.3rem;
-            color: var(--primary-color);
-            margin: 35px 0 15px 0;
-            padding-left: 10px;
-            border-left: 4px solid var(--primary-color);
-            font-weight: 500;
-        }
-
-        /* 列表樣式優化 */
-        ol, ul {
-            padding-left: 20px;
-            margin-bottom: 15px;
-        }
-
-        li {
-            margin-bottom: 12px;
-            color: #34495e;
-        }
-
-        /* 次級列表 */
-        ol ol, ul ul, ol ul {
-            margin-top: 8px;
-            margin-bottom: 5px;
-            list-style-type: circle;
-        }
-
-        /* 強調標籤 */
-        .highlight {
-            color: var(--accent-color);
-            font-weight: 500;
-        }
-
-        /* 注意事項區塊 */
-        .note-box {
-            background-color: var(--primary-light);
-            border: 1px dashed var(--primary-color);
-            padding: 20px;
-            border-radius: 8px;
-            margin: 25px 0;
-            font-size: 0.95rem;
-        }
-
-        .note-box p {
-            margin-bottom: 8px;
-        }
-        .note-box p:last-child {
-            margin-bottom: 0;
-        }
-
-        /* 返回按鈕 */
-        .btn-back {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 12px 24px;
-            background-color: var(--primary-color);
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: 500;
-            box-shadow: 0 4px 15px rgba(91, 112, 101, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .btn-back:hover {
-            background-color: #4a5c53;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(91, 112, 101, 0.3);
-        }
-
-        /* 頁腳 */
-        footer {
+        /* 頂部奢華標題 */
+        header {
             text-align: center;
-            margin-top: 40px;
+            padding: 4rem 1.5rem 1.5rem;
+            width: 100%;
+            max-width: 650px;
+            position: relative;
+        }
+
+        .logo-area {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 0 15px var(--glow-color));
+            animation: float 4s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-12px) scale(1.05); }
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff 30%, var(--accent-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 4px;
+            margin-bottom: 0.75rem;
+            text-shadow: 0 0 30px rgba(0, 242, 254, 0.2);
+        }
+
+        header p {
             color: var(--text-muted);
-            font-size: 0.85rem;
+            font-size: 0.95rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            transition: all 0.5s ease;
         }
 
-        /* 響應式調整 */
-        @media (max-width: 768px) {
-            body {
-                padding: 20px 10px;
-            }
-            .container {
-                padding: 25px 20px;
-            }
-            h1 {
-                font-size: 1.6rem;
-            }
-            h2 {
-                font-size: 1.15rem;
-            }
+        /* 頂級懸浮磨砂導覽列 */
+        nav {
+            display: flex;
+            background-color: var(--nav-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 100px;
+            padding: 6px;
+            width: 92%;
+            max-width: 520px;
+            margin: 1.5rem auto 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.5),
+                inset 0 1px 1px rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 20px;
+            z-index: 100;
         }
-    </style>
-</head>
-<body>
 
-    <div class="container">
-        <!-- 導航路徑 -->
-        <div class="breadcrumb">
-            <a href="index.html">首頁</a>
-            <span>/</span>
-            <span style="color: var(--text-dark);">交付及退費政策</span>
-        </div>
+        .tab-btn {
+            flex: 1;
+            background: none;
+            border: none;
+            color: #9ca3af;
+            padding: 14px 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 100px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            outline: none;
+            position: relative;
+            overflow: hidden;
+        }
 
-        <h1>交付及退費政策</h1>
+        .tab-btn.active {
+            color: #030712;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            font-weight: 700;
+            box-shadow: 0 4px 20px rgba(0, 242, 254, 0.4);
+        }
 
-        <h2>一、 服務預約與建立服務之 SOP</h2>
-        <ol>
-            <li><strong>客戶線上預約：</strong> 客戶透過官方管道諮詢，並選擇所需的生活陪伴項目（如：探店飯友、遊戲陪玩、語意傾聽）。</li>
-            <li><strong>雙方合意與守則確認：</strong> 平台提供詳細價目表與《服務守則》（內含：<span class="highlight">嚴禁肢體接觸、車內禁菸、違規將立即終止服務</span>等規範）。客戶確認同意後，方可進入付款程序。</li>
-            <li><strong>金流支付（訂金/全額）：</strong> 客戶透過金流系統支付服務費用（或支付 30% 訂金+車資）。付款完成後，系統正式建立訂單並鎖定夥伴出勤時間。</li>
-            <li><strong>平台指派與服務履行：</strong> 平台指派陪伴夥伴依約前往指定公共場所（如餐廳、咖啡廳）履行實體陪伴服務，或於線上進行陪玩與語音互動。</li>
-            <li><strong>服務確認與結案：</strong> 服務完成後，夥伴與客戶互相回報。平台於後台對帳系統標記「服務完成」，案件結案。</li>
-        </ol>
+        /* 內容容器 */
+        .content-container {
+            width: 92%;
+            max-width: 620px;
+            flex-grow: 1;
+            margin-bottom: 4rem;
+        }
 
-        <h2>二、 最長預付期</h2>
-        <ul>
-            <li><strong>最長預付期限：</strong> 本平台之服務預約，最長預付期以<span class="highlight">「1個月（30天）」</span>為限。</li>
-            <li><strong>控管機制：</strong> 客戶下單預約之時間，僅能選擇自付款日起算 30 天內之檔期，不接受超過 30 天以上之遠期預約，以降低預收款項之延遲交付風險。</li>
-        </ul>
+        .tab-content {
+            display: none;
+            animation: cubic-bezier(0.16, 1, 0.3, 1) slideUp 0.6s forwards;
+        }
 
-        <h2>三、 服務交付政策 (Delivery & Refund Policy)</h2>
-        <p>為保障消費者權益並防範交易糾紛，本平台建立以下「服務交付與退款退費標準」：</p>
+        .tab-content.active {
+            display: block;
+        }
 
-        <h3>1. 服務履行確認（完成交付）：</h3>
-        <ul>
-            <li><strong>線下陪同（如探店、飯友）：</strong> 服務當日由出勤夥伴與客戶於約定地點會合。服務完成時，夥伴需於工作系統回報，平台亦會同步向客戶確認。若服務當日結束後 <span class="highlight">24 小時內</span> 無任何爭議回報，即視為「服務已完整交付」。</li>
-            <li><strong>線上服務（如陪玩、掛睡）：</strong> 於約定之線上時段完成語音或遊戲陪伴後，<span class="highlight">24 小時內</span> 無爭議回報即視為完成交付。</li>
-        </ul>
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); filter: blur(4px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
 
-        <h3>2. 退費與改期規範（特殊情況處置）：</h3>
-        <ul>
-            <li><strong>非可歸責於客戶之取消（如夥伴臨時有事、天災）：</strong> 平台將協助安排改期，若客戶不願改期，平台將於 3 個工作天內主動辦理全額退費。</li>
-            <li><strong>客戶主動取消：</strong>
-                <ul>
-                    <li>若於約定服務時間 <span class="highlight">24 小時前</span> 取消，平台扣除必要之金流手續費後退還餘額。</li>
-                    <li>若於 <span class="highlight">24 小時內</span> 臨時取消，依平台守則將沒收訂金/服務費用，以補償出勤夥伴已付出之排班與交通預備成本。</li>
-                </ul>
-            </li>
-        </ul>
+        /* 質感邊框區塊標題 */
+        .section-title {
+            font-size: 1.05rem;
+            color: var(--accent-cyan);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 2.2rem 0 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-        <h3>3. 交易糾紛與申訴管道：</h3>
-        <ul>
-            <li>本平台設有專屬客戶服務管道（LINE官方帳號客服）。若客戶認為服務未達預期或有任何不符之處，可於服務結束後 <span class="highlight">24 小時內</span> 提出申訴。</li>
-            <li>平台客服將於收到申訴後 <span class="highlight">48 小時內</span> 完成事實釐清。若確認夥伴未依約履行（如遲到、早退、態度惡劣），平台將依比例或全額退款，並直接從金流系統退刷至客戶原支付信用卡或帳戶。</li>
-        </ul>
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(0, 242, 254, 0.3), transparent);
+        }
 
-        <div class="note-box">
-            <p><strong>💡 溫馨提醒：</strong></p>
-            <p>所有預約與退改簽程序均需透過官方系統記錄，私下協議之約定平台恕不承擔任何第三方責任。我們致力於提供安全、健康且尊重的陪伴體驗，感謝您的理解與配合。</p>
-        </div>
+        /* 卡片清單與質感磨砂玻璃設計 */
+        .card-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
 
-        <div style="text-align: center;">
-            <a href="index.html" class="btn-back">返回首頁</a>
-        </div>
-    </div>
+        a.card-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--card-bg);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid var(--card-border);
+            padding: 1.4rem;
+            border-radius: 18px;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
 
-    <footer>
-        <p>&copy; 2026 閒人安慰所 版權所有 | 交付及退費政策</p>
-    </footer>
+        a.card-link:hover {
+            transform: translateY(-5px) scale(1.01);
+            border-color: var(--accent-cyan);
+            box-shadow: 
+                0 15px 35px rgba(0, 242, 254, 0.15),
+                0 0 15px rgba(0, 242, 254, 0.1);
+        }
 
-</body>
-</html>
+        .card-info {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .card-icon {
+            font-size: 1.6rem;
+            background: rgba(255, 255, 255, 0.03);
+            width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s ease;
+        }
+
+        a.card-link:hover .card-icon {
+            background: rgba(0, 242, 254, 0.1);
+            border-color: rgba(0, 242, 254, 0.3);
+            transform: rotate(-8deg);
+        }
+
+        .card-text h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tag {
+            font-size: 0.7rem;
+            background: linear-gradient(135deg, var(--accent-purple), #7b2cbf);
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 50px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .tag.hot {
+            background: linear-gradient(135deg, var(--accent-pink), #ff0055);
+            box-shadow: 0 0 10px rgba(255, 0, 127, 0.3);
+        }
+
+        .card-text p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+
+        .arrow-icon {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+        }
+
+        a.card-link:hover .arrow-icon {
+            color: var(--accent-cyan);
+            transform: translateX(5px);
+        }
+
+        /* 雙欄一對一諮詢卡片 */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+        }
+
+        .contact-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 18px;
+            padding: 1.8rem 1.2rem;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-main);
+            border: 1px solid var(--card-border);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 15px 35px rgba(0, 242, 254, 0.15);
+        }
+
+        .contact-card .avatar {
+            font-size: 2.8rem;
+            margin-bottom: 0.8rem;
+            transition: all 0.4s ease;
+            display: inline-block;
+        }
+
+        .contact-card:hover .avatar {
+            transform: scale(1.15) rotate(5deg);
+        }
+
+        .contact-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .contact-card p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+
+        /* 密碼鎖定畫面 */
+        .password-overlay {
+            background: var(--card-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            animation: scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1)
