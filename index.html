@@ -3,346 +3,304 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>閒人案內所 👻 ｜ 頂級生活陪伴入口門戶</title>
-    <!-- 引入 Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <!-- 引入 FontAwesome 圖示 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <title>交付及退費政策 | 閒人案內所</title>
     <style>
         :root {
-            --bg-dark: #0b0c10;
-            --bg-card: #1f2833;
-            --neon-blue: #66fcf1;
-            --neon-purple: #da22ff;
-            --neon-pink: #ff007f;
-            --text-main: #ffffff;
-            --text-muted: #c5a880;
-            --text-desc: #a5b1c2;
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --primary-color: #1a1a1a;
+            --accent-color: #d4af37; /* 復古經典金 */
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-color: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --border-color: #333333;
+            --success-color: #2e7d32;
+            --warning-color: #c62828;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Noto Sans TC', 'Poppins', sans-serif;
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            overflow-x: hidden;
-            /* 修正：使用更穩定的背景漸層寫法，避免特定瀏覽器黑屏 */
-            background-image: radial-gradient(circle at top, #1f2833 0%, #0b0c10 70%);
-            background-attachment: fixed;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.8;
+            padding-bottom: 60px;
         }
 
-        /* 頂部 Header */
         header {
-            text-align: center;
-            padding: 3.5rem 1rem 2rem;
-            position: relative;
+            background-color: var(--primary-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        .logo-area {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 1rem;
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .logo-glow {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
-            filter: blur(25px);
-            opacity: 0.6;
-            border-radius: 50%;
-            animation: pulse 3s infinite;
+        .logo {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            text-decoration: none;
+            letter-spacing: 1px;
         }
 
-        .logo-icon {
-            font-size: 3rem;
-            position: relative;
-            z-index: 1;
-            animation: float 4s ease-in-out infinite;
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent-color);
+        }
+
+        main {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
 
         h1 {
-            font-size: 2.5rem;
-            font-weight: 900;
-            letter-spacing: 2px;
-            background: linear-gradient(to right, #fff, var(--neon-blue), var(--neon-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
-            filter: drop-shadow(0 2px 10px rgba(102, 252, 241, 0.3));
+            font-size: 2.2rem;
+            color: #ffffff;
+            margin-bottom: 10px;
+            text-align: center;
+            letter-spacing: 1px;
         }
 
         .subtitle {
-            font-size: 0.95rem;
-            color: var(--neon-blue);
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            font-weight: 500;
-            opacity: 0.9;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 40px;
         }
 
-        /* 主容器 */
-        main {
-            max-width: 900px;
-            width: 100%;
-            margin: 0 auto;
-            padding: 0 1.5rem 5rem;
-            flex-grow: 1;
+        .section-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
 
-        /* 區塊標題 */
-        .section-title {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin: 2.5rem 0 1.25rem;
-            padding-left: 0.5rem;
+        h2 {
+            font-size: 1.4rem;
+            color: var(--accent-color);
+            margin-bottom: 25px;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 12px;
+            letter-spacing: 0.5px;
         }
 
-        .section-title span {
-            width: 4px;
-            height: 24px;
-            background: linear-gradient(to bottom, var(--neon-blue), var(--neon-purple));
-            border-radius: 4px;
-            box-shadow: 0 0 10px var(--neon-blue);
-        }
-
-        .section-title h2 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            color: #fff;
-        }
-
-        /* 卡片列表樣式 */
-        .card-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.25rem;
-        }
-
-        @media (min-width: 600px) {
-            .card-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .portal-card {
-            background: linear-gradient(135deg, rgba(31, 40, 51, 0.8), rgba(20, 26, 33, 0.9));
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 1.25rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            text-decoration: none;
-            color: inherit;
+        /* SOP 時間軸樣式 */
+        .sop-timeline {
             position: relative;
-            overflow: hidden;
-            transition: var(--transition);
+            margin-left: 10px;
+            padding-left: 20px;
+            border-left: 2px solid var(--border-color);
         }
 
-        .portal-card::before {
+        .sop-item {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .sop-item::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.03), transparent);
-            transform: translateX(-100%);
-            transition: 0.6s;
+            left: -29px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            border: 3px solid var(--card-bg);
         }
 
-        .portal-card:hover::before {
-            transform: translateX(100%);
+        .sop-step {
+            font-weight: bold;
+            color: #ffffff;
+            font-size: 1.1rem;
+            margin-bottom: 6px;
         }
 
-        .portal-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--neon-blue);
-            box-shadow: 0 8px 25px rgba(102, 252, 241, 0.15);
+        .sop-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            text-align: justify;
         }
 
-        .card-left {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
+        ul, ol {
+            padding-left: 20px;
         }
 
-        .card-icon {
-            width: 45px;
-            height: 45px;
-            border-radius: 12px;
-            background: rgba(102, 252, 241, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--neon-blue);
-            font-size: 1.25rem;
-            border: 1px solid rgba(102, 252, 241, 0.2);
-            transition: var(--transition);
+        li {
+            margin-bottom: 12px;
         }
 
-        .portal-card:hover .card-icon {
-            background: var(--neon-blue);
-            color: #000;
-            box-shadow: 0 0 15px var(--neon-blue);
-        }
-
-        .card-info h3 {
-            font-size: 1.05rem;
-            font-weight: 700;
-            margin-bottom: 0.25rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+        strong {
+            color: #ffffff;
         }
 
         .badge {
-            font-size: 0.7rem;
-            padding: 0.15rem 0.5rem;
-            border-radius: 20px;
-            font-weight: 700;
-            text-transform: uppercase;
+            color: #ffffff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 5px;
         }
 
-        .badge.hot {
-            background: rgba(255, 0, 127, 0.2);
-            color: var(--neon-pink);
-            border: 1px solid rgba(255, 0, 127, 0.3);
-        }
-
-        .badge.admin {
-            background: rgba(218, 34, 255, 0.2);
-            color: var(--neon-purple);
-            border: 1px solid rgba(218, 34, 255, 0.3);
-        }
-
-        .card-info p {
+        footer {
+            text-align: center;
+            color: var(--text-muted);
             font-size: 0.85rem;
-            color: var(--text-desc);
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
         }
 
-        .card-arrow {
-            color: var(--text-desc);
-            font-size: 0.9rem;
-            transition: var(--transition);
+        .sub-list {
+            list-style-type: square;
+            margin-top: 8px;
+            padding-left: 20px;
         }
 
-        .portal-card:hover .card-arrow {
-            color: var(--neon-blue);
-            transform: translateX(3px);
+        .sub-list li {
+            font-size: 0.95rem;
+            color: var(--text-muted);
         }
 
-        /* 專人諮詢聯絡區 (大卡片) */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.25rem;
-            margin-top: 1rem;
-        }
-
-        @media (min-width: 600px) {
-            .contact-grid {
-                grid-template-columns: 1fr 1fr;
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            .section-card {
+                padding: 20px;
+            }
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .nav-links a {
+                margin: 0 10px;
             }
         }
+    </style>
+</head>
+<body>
 
-        .contact-card {
-            background: linear-gradient(135deg, rgba(31, 40, 51, 0.8), rgba(20, 26, 33, 0.9));
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 1.5rem;
-            text-align: center;
-            text-decoration: none;
-            color: inherit;
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.75rem;
-        }
+    <header>
+        <div class="nav-container">
+            <a href="/" class="logo">閒人案內所</a>
+            <nav class="nav-links">
+                <a href="/">首頁</a>
+                <a href="#" class="active">交付及退費政策</a>
+            </nav>
+        </div>
+    </header>
 
-        .contact-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--neon-purple);
-            box-shadow: 0 8px 25px rgba(218, 34, 255, 0.15);
-        }
+    <main>
+        <h1>交付及退費政策</h1>
+        <p class="subtitle">Delivery & Refund Policy</p>
 
-        .contact-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: rgba(218, 34, 255, 0.1);
-            border: 2px solid rgba(218, 34, 255, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: var(--neon-purple);
-            transition: var(--transition);
-        }
+        <!-- 一、 SOP 區塊 -->
+        <section class="section-card">
+            <h2>一、 服務預約與建立服務之 SOP</h2>
+            <div class="sop-timeline">
+                <div class="sop-item">
+                    <div class="sop-step">1. 客戶線上預約</div>
+                    <div class="sop-desc">客戶透過官方管道諮詢，並選擇所需的生活陪伴項目（如：探店飯友、遊戲陪玩、語意傾聽）。</div>
+                </div>
+                <div class="sop-item">
+                    <div class="sop-step">2. 雙方合意與守則確認</div>
+                    <div class="sop-desc">平台提供詳細價目表與《服務守則》（內含：嚴禁肢體接觸、車內禁菸、違規將立即終止服務等規範）。客戶確認同意後，方可進入付款程序。</div>
+                </div>
+                <div class="sop-item">
+                    <div class="sop-step">3. 金流支付（訂金/全額）</div>
+                    <div class="sop-desc">客戶透過金流系統支付服務費用（或支付 30% 訂金+車資）。付款完成後，系統正式建立訂單並鎖定夥伴出勤時間。</div>
+                </div>
+                <div class="sop-item">
+                    <div class="sop-step">4. 平台指派與服務履行</div>
+                    <div class="sop-desc">平台指派陪伴夥伴依約前往指定公共場所（如餐廳、咖啡廳）履行實體陪伴服務，或於線上進行陪玩與語音互動。</div>
+                </div>
+                <div class="sop-item">
+                    <div class="sop-step">5. 服務確認與結案</div>
+                    <div class="sop-desc">服務完成後，夥伴與客戶互相回報。平台於後台對帳系統標記「服務完成」，案件結案。</div>
+                </div>
+            </div>
+        </section>
 
-        .contact-card:hover .contact-avatar {
-            background: var(--neon-purple);
-            color: #fff;
-            box-shadow: 0 0 20px var(--neon-purple);
-        }
+        <!-- 二、 最長預付期 -->
+        <section class="section-card">
+            <h2>二、 最長預付期</h2>
+            <ul>
+                <li>
+                    <strong>最長預付期限：</strong> 本平台之服務預約，最長預付期以<strong>「1個月（30天）」</strong>為限。
+                </li>
+                <li>
+                    <strong>控管機制：</strong> 客戶下單預約之時間，僅能選擇自付款日起算 30 天內之檔期，不接受超過 30 天以上之遠期預約，以降低預收款項之延遲交付風險。
+                </li>
+            </ul>
+        </section>
 
-        .contact-card h3 {
-            font-size: 1.15rem;
-            font-weight: 700;
-        }
+        <!-- 三、 服務交付政策 -->
+        <section class="section-card">
+            <h2>三、 服務交付政策 (Delivery & Refund Policy)</h2>
+            <p style="margin-bottom: 20px; color: var(--text-muted);">為保障消費者權益並防範交易糾紛，本平台建立以下「服務交付與退款退費標準」：</p>
+            
+            <ol>
+                <li>
+                    <strong>服務履行確認（完成交付）：</strong>
+                    <ul class="sub-list">
+                        <li><strong>線下陪同（如探店、飯友）：</strong> 服務當日由出勤夥伴與客戶於約定地點會合。服務完成時，夥伴需於工作系統回報，平台亦會同步向客戶確認。若服務當日結束後 <strong>24 小時內</strong> 無任何爭議回報，即視為「服務已完整交付」。</li>
+                        <li><strong>線上服務（如陪玩、掛睡）：</strong> 於約定之線上時段完成語音或遊戲陪伴後，<strong>24 小時內</strong> 無爭議回報即視為完成交付。</li>
+                    </ul>
+                </li>
+                
+                <li style="margin-top: 20px;">
+                    <strong>退費與改期規範（特殊情況處置）：</strong>
+                    <ul class="sub-list">
+                        <li><span class="badge" style="background-color: var(--success-color);">非歸責客戶</span> <strong>非可歸責於客戶之取消（如夥伴臨時有事、天災）：</strong> 平台將協助安排改期，若客戶不願改期，平台將於 <strong>3 個工作天內</strong> 主動辦理全額退費。</li>
+                        <li><span class="badge" style="background-color: var(--warning-color);">客戶端取消</span> <strong>客戶主動取消：</strong>
+                            <div style="margin-top: 5px; padding-left: 10px; border-left: 2px solid var(--border-color);">
+                                • 若於約定服務時間 <strong>24 小時前</strong> 取消，平台扣除必要之金流手續費後退還餘額。<br>
+                                • 若於 <strong>24 小時內</strong> 臨時取消，依平台守則將沒收訂金/服務費用，以補償出勤夥伴已付出之排班與交通預備成本。
+                            </div>
+                        </li>
+                    </ul>
+                </li>
 
-        .contact-card p {
-            font-size: 0.85rem;
-            color: var(--text-desc);
-        }
+                <li style="margin-top: 20px;">
+                    <strong>交易糾紛與申訴管道：</strong>
+                    <ul class="sub-list">
+                        <li>本平台設有專屬客戶服務管道（LINE官方帳號客服）。若客戶認為服務未達預期或有任何不符之處，可於服務結束後 <strong>24 小時內</strong> 提出申訴。</li>
+                        <li>平台客服將於收到申訴後 <strong>48 小時內</strong> 完成事實釐清。若確認夥伴未依約履行（如遲到、早退、態度惡劣），平台將依比例或全額退款，並直接從金流系統退刷至客戶原支付信用卡或帳戶。</li>
+                    </ul>
+                </li>
+            </ol>
+        </section>
 
-        /* Hotline 專用橫幅 */
-        .hotline-banner {
-            background: linear-gradient(135deg, rgba(255, 0, 127, 0.15), rgba(31, 40, 51, 0.8));
-            border: 1px solid rgba(255, 0, 127, 0.3);
-            border-radius: 16px;
-            padding: 1.25rem;
-            margin-bottom: 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            text-decoration: none;
-            color: inherit;
-            transition: var(--transition);
-        }
+        <footer>
+            <p>&copy; 2026 閒人案內所. 版權所有.</p>
+        </footer>
+    </main>
 
-        .hotline-banner:hover {
-            box-shadow: 0 5px 20px rgba(255, 0, 127, 0.25);
-            border-color: var(--neon-pink);
-        }
-
-        .hotline-left {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .hotline-icon {
-            font-size: 2rem;
-            color: var(--neon-pink);
-            animation: pho
+</body>
+</html>
